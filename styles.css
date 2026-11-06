@@ -286,3 +286,37 @@ p { margin: 0 0 1em; }
 
 /* Titre de l'accueil : volontairement discret */
 #hero-titre { font-size: clamp(.8rem, .7rem + .35vw, 1rem); }
+
+/* ---------- Écran d'accès provisoire (voir acces.js) ---------- */
+html.verrou body { overflow: hidden; }
+html.verrou body > :not(.acces):not(svg) { display: none !important; }
+.acces {
+  position: fixed; inset: 0; z-index: 100;
+  display: grid; place-items: center; padding: 1.5rem 1rem;
+  background: var(--ivoire) url("images/marbre.webp") center top / 2400px auto repeat;
+}
+.acces__carte {
+  width: 100%; max-width: 26rem; text-align: center;
+  padding: 2.5rem 1.5rem 2rem;
+  border: 1px solid var(--trait);
+  background: rgba(248, 244, 241, .82);
+}
+.acces__logo { width: 9.5rem; margin: 0 auto 1.6rem; }
+.acces__titre {
+  font-family: var(--capitale); font-size: 1rem; font-weight: 400;
+  letter-spacing: .28em; text-transform: uppercase; color: var(--nuit);
+}
+.acces__texte { margin: .9rem 0 1.6rem; color: var(--encre-doux); }
+.acces__form { display: grid; gap: .9rem; }
+.acces__champ {
+  width: 100%; min-height: 48px; padding: .6rem 1rem;
+  font: inherit; font-size: 1.1rem; text-align: center; letter-spacing: .12em;
+  color: var(--encre); background: #fff;
+  border: 1px solid var(--trait); border-radius: 999px;
+}
+.acces__champ:focus { outline: none; border-color: var(--or); box-shadow: 0 0 0 3px rgba(176, 134, 66, .18); }
+.acces__bouton { justify-content: center; width: 100%; min-height: 48px; cursor: pointer; font: inherit; font-size: 1.15rem; }
+.acces__erreur { min-height: 1.4em; margin: 0; font-style: italic; color: #9b2c2c; }
+.acces__form--erreur .acces__champ { animation: secoue .4s var(--ease); }
+@keyframes secoue { 25% { transform: translateX(-6px); } 50% { transform: translateX(6px); } 75% { transform: translateX(-3px); } }
+@media (min-width: 48em) { .acces__carte { padding: 3rem 2.75rem 2.5rem; } }
