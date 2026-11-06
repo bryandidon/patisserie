@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bryan Didon – Haute Pâtisserie · Guadeloupe</title>
+  <meta name="description" content="Bryan Didon, haute pâtisserie en Guadeloupe. Créations pâtissières de saison : galettes des rois, bûches de Noël, praliné. Commande en click & collect.">
+  <meta property="og:title" content="Bryan Didon – Haute Pâtisserie">
+  <meta property="og:description" content="Créations pâtissières de saison, en Guadeloupe.">
+  <meta property="og:image" content="images/og-bryan-didon.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#f8f4f1">
+  <link rel="icon" type="image/png" href="images/monogramme-bd.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!--
+    À COMPLÉTER (cherche "TODO" dans ce fichier) :
+    - le lien de l'application de commande (click & collect) : variable ORDER_URL plus bas, et les liens marqués TODO
+    - les liens Instagram, TikTok, Facebook
+    - l'adresse email de contact
+  -->
+
+  <a class="skip" href="#contenu">Aller au contenu</a>
+
+  <!-- SVG réutilisés : fleur de lys, sac, chevron -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="lys" viewBox="0 0 40 44">
+      <path fill="currentColor" d="M20 1c-2.6 4.2-4.6 7.6-4.6 11.6 0 3.4 2 6.3 3.4 8.6-2-.6-3.9-2-5.4-4.3-1.6-2.5-4.3-3.6-6.6-2.7-2.3.9-3.3 3.6-2.2 5.9 1 2.1 3.6 3 5.4 1.9-.6 1.4-2 2.2-3.6 2 1.4 1.7 4.6 2.2 7.2.6 1.7-1 3-2.5 4-4.1v4.4h-6.2v2.4h6.2v1.5c-1.4 2-3.5 3.8-6.2 4.6 2.8.6 5-.3 6.6-1.8.7 2.9 1.2 5.2 1.8 6.4.6-1.2 1.1-3.5 1.8-6.4 1.6 1.5 3.8 2.4 6.6 1.8-2.7-.8-4.8-2.6-6.2-4.6v-1.5h6.2v-2.4h-6.2v-4.4c1 1.6 2.3 3.1 4 4.1 2.6 1.6 5.8 1.1 7.2-.6-1.6.2-3-.6-3.6-2 1.8 1.1 4.4.2 5.4-1.9 1.1-2.3.1-5-2.2-5.9-2.3-.9-5 .2-6.6 2.7-1.5 2.3-3.4 3.7-5.4 4.3 1.4-2.3 3.4-5.2 3.4-8.6C24.6 8.6 22.6 5.2 20 1z"/>
+    </symbol>
+    <symbol id="sac" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M5 8h14l-1 13H6L5 8z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M9 10V6.5a3 3 0 0 1 6 0V10"/>
+    </symbol>
+    <symbol id="chevron" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M10 7l5 5-5 5"/>
+    </symbol>
+  </svg>
+
+  <header class="nav" data-nav>
+    <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu" data-menu-toggle>
+      <span class="nav__menu-bars" aria-hidden="true"></span>
+      <span class="sr">Menu</span>
+    </button>
+
+    <nav class="nav__side nav__side--left" aria-label="Navigation principale">
+      <a href="#top" aria-current="page">Accueil</a>
+      <a href="#creations">Nos créations</a>
+    </nav>
+
+    <a class="nav__logo" href="#top" aria-label="Bryan Didon, Haute Pâtisserie, accueil">
+      <img src="images/logo-bryan-didon.png" alt="" width="1358" height="786">
+    </a>
+
+    <nav class="nav__side nav__side--right" aria-label="Navigation secondaire">
+      <a href="#maison">La Maison</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- TODO : remplacer #commander par le lien de l'application de commande -->
+    <a class="pill pill--order" href="#commander">
+      <svg class="pill__icon" aria-hidden="true"><use href="#sac"/></svg>
+      <span class="pill__label">Commander <span>Click &amp; Collect</span></span>
+    </a>
+
+    <div class="menu" id="menu" hidden data-menu>
+      <a href="#top">Accueil</a>
+      <a href="#creations">Nos créations</a>
+      <a href="#maison">La Maison</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main id="contenu">
+
+    <!-- Accueil -->
+    <section class="hero" id="top" aria-labelledby="hero-titre">
+      <img class="hero__corner hero__corner--left" src="images/feuillage.png" alt="" width="520" height="456">
+      <img class="hero__corner hero__corner--right" src="images/feuillage.png" alt="" width="520" height="456">
+
+      <div class="hero__inner">
+        <svg class="lys" aria-hidden="true"><use href="#lys"/></svg>
+        <h1 class="title" id="hero-titre"><span>Créations pâtissières<br> de saison</span></h1>
+
+        <!-- Carrousel : la pièce de devant en grand, les autres derrière.
+             TODO : les photos "temp-..." sont provisoires, à remplacer par tes vraies créations. -->
+        <div class="carousel" data-carousel aria-roledescription="carrousel" aria-label="Nos pièces de saison">
+          <div class="carousel__ring">
+            <figure class="carousel__item" data-name="La galette des rois">
+              <img src="images/galette-hero.webp" width="1251" height="702" alt="Galette des rois tressée, dorée">
+            </figure>
+            <figure class="carousel__item carousel__item--fondu" data-name="Tarte chocolat-noisette">
+              <img src="images/temp-tarte-chocolat.webp" width="980" height="752" alt="Tarte chocolat-noisette, rosaces de ganache et noisettes">
+            </figure>
+            <figure class="carousel__item carousel__item--fondu" data-name="Paris-Brest">
+              <img src="images/temp-paris-brest.webp" width="732" height="630" alt="Paris-Brest, crème pralinée">
+            </figure>
+            <figure class="carousel__item carousel__item--fondu" data-name="Tarte framboise">
+              <img src="images/temp-tarte-framboise.webp" width="848" height="584" alt="Tarte aux framboises fraîches">
+            </figure>
+          </div>
+          <div class="carousel__controls">
+            <button class="carousel__btn" type="button" data-prev aria-label="Pièce précédente">
+              <svg aria-hidden="true"><use href="#chevron"/></svg>
+            </button>
+            <p class="carousel__name" aria-live="polite" data-name-out>La galette des rois</p>
+            <button class="carousel__btn carousel__btn--next" type="button" data-next aria-label="Pièce suivante">
+              <svg aria-hidden="true"><use href="#chevron"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <a class="pill pill--cta" href="#creations">
+          Découvrir nos créations
+          <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
+        </a>
+      </div>
+
+      <img class="hero__toile" src="images/toile-cobalt.webp" alt="" width="2102" height="1024">
+    </section>
+
+    <!-- Nos créations -->
+    <section class="section" id="creations" aria-labelledby="creations-titre">
+      <header class="section__head">
+        <svg class="lys" aria-hidden="true"><use href="#lys"/></svg>
+        <h2 class="title" id="creations-titre">Nos créations</h2>
+      </header>
+
+      <article class="feature" id="galette" aria-labelledby="galette-titre">
+        <div class="feature__media">
+          <figure class="reveal" data-reveal>
+            <img class="reveal__img reveal__img--outside" src="images/galette-coupe.webp" width="1535" height="1024" loading="lazy"
+                 alt="Galette des rois coupée en deux : le feuilletage et la crème d'amande">
+            <img class="reveal__img reveal__img--inside" src="images/galette-entiere.webp" width="1535" height="1024" loading="lazy"
+                 alt="Galette des rois tressée, vue de trois quarts">
+          </figure>
+          <button class="link-btn" type="button" aria-pressed="false" data-reveal-toggle>
+            <span data-label-closed>Voir la galette entière</span>
+            <span data-label-open hidden>Voir la coupe</span>
+          </button>
+        </div>
+        <div class="feature__text">
+          <h3 id="galette-titre">La galette des rois</h3>
+          <p class="lead">Pâte feuilletée levée, tressée à la main. Proposée en janvier, pour l'Épiphanie et tout le mois qui suit.</p>
+          <dl class="prices" aria-label="Formats et prix">
+            <div><dt>Petite</dt><dd>26&nbsp;€</dd></div>
+            <div><dt>Moyenne</dt><dd>39&nbsp;€</dd></div>
+            <div><dt>Grande</dt><dd>49&nbsp;€</dd></div>
+          </dl>
+          <a class="pill pill--cta" href="#commander">Commander une galette
+            <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <div class="duo">
+        <article class="card" id="buches" aria-labelledby="buches-titre">
+          <!-- TODO : remplacer la vignette par une photo des bûches -->
+          <img class="card__media" src="images/vignette-palmiers.webp" alt="" width="415" height="630" loading="lazy">
+          <h3 id="buches-titre">Les bûches de Noël</h3>
+          <p>Vanille, chocolat, exotique. Moulées dans nos propres moules à relief, finies au velours ou d'un nappage miroir.</p>
+          <p class="card__note">Collection Noël 2026. Précommandes bientôt ouvertes.</p>
+        </article>
+
+        <article class="card" id="praline" aria-labelledby="praline-titre">
+          <!-- TODO : remplacer la vignette par une photo du bocal de praliné -->
+          <img class="card__media" src="images/vignette-palais.webp" alt="" width="480" height="370" loading="lazy">
+          <h3 id="praline-titre">Le praliné</h3>
+          <p>Moitié amande, moitié noisette, en bocal. Pour la cuillère, la tartine, ou rien du tout.</p>
+          <p class="card__note">Bientôt disponible.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- La Maison -->
+    <section class="section section--maison" id="maison" aria-labelledby="maison-titre">
+      <header class="section__head">
+        <svg class="lys" aria-hidden="true"><use href="#lys"/></svg>
+        <h2 class="title" id="maison-titre">La Maison</h2>
+      </header>
+      <div class="prose">
+        <p>Bryan Didon fait de la haute pâtisserie en Guadeloupe. Des pièces de saison, en petites séries, travaillées comme dans les grandes maisons et pensées pour la chaleur et l'air des îles.</p>
+        <p>Chaque création se commande à l'avance et se retire au laboratoire.</p>
+      </div>
+    </section>
+
+    <!-- Commander -->
+    <section class="order" id="commander" aria-labelledby="commander-titre">
+      <svg class="lys lys--light" aria-hidden="true"><use href="#lys"/></svg>
+      <h2 class="title title--light" id="commander-titre">Click &amp; Collect</h2>
+      <p>Choisissez vos pièces en ligne, puis retirez-les à l'heure convenue.</p>
+      <!-- TODO : remplacer # par le lien de l'application de commande -->
+      <a class="pill pill--light" href="#">
+        <svg class="pill__icon" aria-hidden="true"><use href="#sac"/></svg>
+        Ouvrir la boutique en ligne
+      </a>
+    </section>
+
+    <!-- Contact -->
+    <section class="section section--contact" id="contact" aria-labelledby="contact-titre">
+      <header class="section__head">
+        <svg class="lys" aria-hidden="true"><use href="#lys"/></svg>
+        <h2 class="title" id="contact-titre">Contact</h2>
+      </header>
+      <p class="contact__intro">Les nouvelles créations sortent d'abord sur les réseaux.</p>
+      <ul class="social" aria-label="Réseaux sociaux">
+        <!-- TODO : remplacer les # par tes liens -->
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">TikTok</a></li>
+        <li><a href="#">Facebook</a></li>
+      </ul>
+      <!-- TODO : email de contact, ex. <p class="contact__mail"><a href="mailto:contact@bryandidon.fr">contact@bryandidon.fr</a></p> -->
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__bar">
+      <img src="images/monogramme-bd.png" alt="" width="40" height="37" loading="lazy">
+      <p>© <span data-year>2026</span> Bryan Didon – Haute Pâtisserie, Guadeloupe</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
