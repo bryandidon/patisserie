@@ -60,6 +60,7 @@
       if (!valeur) { erreur.textContent = 'Veuillez saisir le code.'; return; }
       if (await empreinte(valeur) === EMPREINTE) {
         memoriser();
+        try { if (window.umami) window.umami.track('Accès au site débloqué'); } catch (e) {}
         root.classList.remove('verrou');
         ecran.remove();
         window.scrollTo(0, 0);

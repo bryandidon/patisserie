@@ -16,6 +16,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="liens.css">
+  <!-- Statistiques de visite (Umami, sans cookies) : tableau de bord privé sur cloud.umami.is -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="5df12328-5536-4b4b-959f-b7816c570dce" data-domains="bryandidon.fr,www.bryandidon.fr"></script>
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -59,29 +61,29 @@
 
     <nav class="liens__liste" aria-label="Nos liens">
       <!-- TODO : décommenter et remplacer # par le lien de l'application de commande
-      <a class="lien lien--plein" href="#">
+      <a class="lien lien--plein" href="#" data-umami-event="Commander" data-umami-event-depuis="page liens">
         <svg class="lien__icone" aria-hidden="true"><use href="#i-sac"/></svg>
         <span class="lien__texte">Commander en Click &amp; Collect</span>
         <svg class="lien__chevron" aria-hidden="true"><use href="#i-chevron"/></svg>
       </a>
       -->
-      <a class="lien" href="https://www.bryandidon.fr/">
+      <a class="lien" href="https://www.bryandidon.fr/" data-umami-event="Lien" data-umami-event-cible="site">
         <svg class="lien__icone" aria-hidden="true"><use href="#i-site"/></svg>
         <span class="lien__texte">Notre site</span>
         <svg class="lien__chevron" aria-hidden="true"><use href="#i-chevron"/></svg>
       </a>
-      <a class="lien" href="https://www.instagram.com/cookingbyjones/" target="_blank" rel="noopener">
+      <a class="lien" href="https://www.instagram.com/cookingbyjones/" target="_blank" rel="noopener" data-umami-event="Lien" data-umami-event-cible="instagram">
         <svg class="lien__icone" aria-hidden="true"><use href="#i-instagram"/></svg>
         <span class="lien__texte">Instagram</span>
         <svg class="lien__chevron" aria-hidden="true"><use href="#i-chevron"/></svg>
       </a>
-      <a class="lien" href="https://www.tiktok.com/@cookingbyjones" target="_blank" rel="noopener">
+      <a class="lien" href="https://www.tiktok.com/@cookingbyjones" target="_blank" rel="noopener" data-umami-event="Lien" data-umami-event-cible="tiktok">
         <svg class="lien__icone" aria-hidden="true"><use href="#i-tiktok"/></svg>
         <span class="lien__texte">TikTok</span>
         <svg class="lien__chevron" aria-hidden="true"><use href="#i-chevron"/></svg>
       </a>
       <!-- TODO : décommenter et remplacer # par le lien Facebook
-      <a class="lien" href="#" target="_blank" rel="noopener">
+      <a class="lien" href="#" target="_blank" rel="noopener" data-umami-event="Lien" data-umami-event-cible="facebook">
         <svg class="lien__icone" aria-hidden="true"><use href="#i-facebook"/></svg>
         <span class="lien__texte">Facebook</span>
         <svg class="lien__chevron" aria-hidden="true"><use href="#i-chevron"/></svg>

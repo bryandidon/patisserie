@@ -1,3 +1,12 @@
+// Statistiques : exclure ses propres visites sur cet appareil.
+// Ouvrir une fois https://www.bryandidon.fr/?moi=1 (et ?moi=0 pour annuler).
+// Ce script s'exécute avant celui d'Umami (chargé en "defer"), donc le réglage s'applique dès cette visite.
+try {
+  const moi = new URLSearchParams(location.search).get('moi');
+  if (moi === '1') localStorage.setItem('umami.disabled', '1');
+  if (moi === '0') localStorage.removeItem('umami.disabled');
+} catch (e) {}
+
 // Navigation : fond ivoire dès qu'on quitte le haut de page
 const nav = document.querySelector('[data-nav]');
 const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 30);

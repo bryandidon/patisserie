@@ -16,6 +16,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <!-- Statistiques de visite (Umami, sans cookies) : tableau de bord privé sur cloud.umami.is -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="5df12328-5536-4b4b-959f-b7816c570dce" data-domains="bryandidon.fr,www.bryandidon.fr"></script>
   <script src="acces.js"></script>
 </head>
 <body>
@@ -63,7 +65,7 @@
     </nav>
 
     <!-- TODO : remplacer #commander par le lien de l'application de commande -->
-    <a class="pill pill--order" href="#commander">
+    <a class="pill pill--order" href="#commander" data-umami-event="Commander" data-umami-event-depuis="menu">
       <svg class="pill__icon" aria-hidden="true"><use href="#sac"/></svg>
       <span class="pill__label">Commander <span>Click &amp; Collect</span></span>
     </a>
@@ -114,7 +116,7 @@
           </div>
         </div>
 
-        <a class="pill pill--cta" href="#creations">
+        <a class="pill pill--cta" href="#creations" data-umami-event="Découvrir les créations">
           Découvrir nos créations
           <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
         </a>
@@ -138,7 +140,7 @@
             <img class="reveal__img reveal__img--inside" src="images/galette-entiere.webp" width="1535" height="1024" loading="lazy"
                  alt="Galette des rois tressée, vue de trois quarts">
           </figure>
-          <button class="link-btn" type="button" aria-pressed="false" data-reveal-toggle>
+          <button class="link-btn" type="button" aria-pressed="false" data-reveal-toggle data-umami-event="Galette : voir entière ou coupe">
             <span data-label-closed>Voir la galette entière</span>
             <span data-label-open hidden>Voir la coupe</span>
           </button>
@@ -151,7 +153,7 @@
             <div><dt>Moyenne</dt><dd>39&nbsp;€</dd></div>
             <div><dt>Grande</dt><dd>49&nbsp;€</dd></div>
           </dl>
-          <a class="pill pill--cta" href="#commander">Commander une galette
+          <a class="pill pill--cta" href="#commander" data-umami-event="Commander" data-umami-event-depuis="galette">Commander une galette
             <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
           </a>
         </div>
@@ -169,9 +171,9 @@
                    alt="Bûche vanille ivoire, moulée en relief d'hibiscus et de feuillages">
             </div>
             <div class="parfums__choix" role="group" aria-label="Choisir un parfum">
-              <button class="parfum" type="button" aria-pressed="true" data-parfum-btn="exotique"><span class="parfum__pastille" style="--teinte:#f2b81c"></span>Exotique</button>
-              <button class="parfum" type="button" aria-pressed="false" data-parfum-btn="chocolat"><span class="parfum__pastille" style="--teinte:#8a4a32"></span>Chocolat</button>
-              <button class="parfum" type="button" aria-pressed="false" data-parfum-btn="vanille"><span class="parfum__pastille" style="--teinte:#f6e7b4"></span>Vanille</button>
+              <button class="parfum" type="button" aria-pressed="true" data-parfum-btn="exotique" data-umami-event="Parfum de bûche" data-umami-event-parfum="exotique"><span class="parfum__pastille" style="--teinte:#f2b81c"></span>Exotique</button>
+              <button class="parfum" type="button" aria-pressed="false" data-parfum-btn="chocolat" data-umami-event="Parfum de bûche" data-umami-event-parfum="chocolat"><span class="parfum__pastille" style="--teinte:#8a4a32"></span>Chocolat</button>
+              <button class="parfum" type="button" aria-pressed="false" data-parfum-btn="vanille" data-umami-event="Parfum de bûche" data-umami-event-parfum="vanille"><span class="parfum__pastille" style="--teinte:#f6e7b4"></span>Vanille</button>
             </div>
           </div>
           <h3 id="buches-titre">Les bûches de Noël</h3>
@@ -209,7 +211,7 @@
       <h2 class="title title--light" id="commander-titre">Click &amp; Collect</h2>
       <p>Choisissez vos pièces en ligne, puis retirez-les à l'heure convenue.</p>
       <!-- TODO : remplacer # par le lien de l'application de commande -->
-      <a class="pill pill--light" href="#">
+      <a class="pill pill--light" href="#" data-umami-event="Commander" data-umami-event-depuis="boutique">
         <svg class="pill__icon" aria-hidden="true"><use href="#sac"/></svg>
         Ouvrir la boutique en ligne
       </a>
@@ -224,9 +226,9 @@
       <p class="contact__intro">Les nouvelles créations sortent d'abord sur les réseaux.</p>
       <ul class="social" aria-label="Réseaux sociaux">
         <!-- TODO : remplacer les # par tes liens -->
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">TikTok</a></li>
-        <li><a href="#">Facebook</a></li>
+        <li><a href="#" data-umami-event="Réseau social" data-umami-event-reseau="instagram" data-umami-event-depuis="site">Instagram</a></li>
+        <li><a href="#" data-umami-event="Réseau social" data-umami-event-reseau="tiktok" data-umami-event-depuis="site">TikTok</a></li>
+        <li><a href="#" data-umami-event="Réseau social" data-umami-event-reseau="facebook" data-umami-event-depuis="site">Facebook</a></li>
       </ul>
       <!-- TODO : email de contact, ex. <p class="contact__mail"><a href="mailto:contact@bryandidon.fr">contact@bryandidon.fr</a></p> -->
     </section>
