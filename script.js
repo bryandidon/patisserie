@@ -148,6 +148,18 @@ if (reveal && toggle) {
   });
 }
 
+// Bûches : changer de parfum
+const parfums = document.querySelector('[data-parfums]');
+if (parfums) {
+  const imgs = parfums.querySelectorAll('[data-parfum]');
+  const btns = parfums.querySelectorAll('[data-parfum-btn]');
+  btns.forEach((btn) => btn.addEventListener('click', () => {
+    const choix = btn.dataset.parfumBtn;
+    imgs.forEach((img) => img.classList.toggle('is-active', img.dataset.parfum === choix));
+    btns.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+  }));
+}
+
 // Année du pied de page
 const year = document.querySelector('[data-year]');
 if (year) year.textContent = new Date().getFullYear();

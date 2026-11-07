@@ -87,21 +87,23 @@
         <svg class="lys" aria-hidden="true"><use href="#lys"/></svg>
         <h1 class="title" id="hero-titre"><span>Créations pâtissières<br> de saison</span></h1>
 
-        <!-- Carrousel : la pièce de devant en grand, les autres derrière.
-             TODO : les photos "temp-..." sont provisoires, à remplacer par tes vraies créations. -->
+        <!-- Carrousel : la pièce de devant en grand, les autres derrière. -->
         <div class="carousel" data-carousel aria-roledescription="carrousel" aria-label="Nos pièces de saison">
           <div class="carousel__ring">
             <figure class="carousel__item" data-name="La galette des rois">
               <img src="images/galette-hero.webp" width="1251" height="702" alt="Galette des rois tressée, dorée">
             </figure>
-            <figure class="carousel__item carousel__item--fondu" data-name="Tarte chocolat-noisette">
-              <img src="images/temp-tarte-chocolat.webp" width="980" height="752" alt="Tarte chocolat-noisette, rosaces de ganache et noisettes">
+            <figure class="carousel__item carousel__item--fondu" data-name="Bûche exotique">
+              <img src="images/buche-exotique.webp" width="1079" height="513" alt="Bûche exotique jaune, moulée en relief d'hibiscus et de feuillages, bordée de torsades">
             </figure>
-            <figure class="carousel__item carousel__item--fondu" data-name="Paris-Brest">
-              <img src="images/temp-paris-brest.webp" width="732" height="630" alt="Paris-Brest, crème pralinée">
+            <figure class="carousel__item carousel__item--fondu" data-name="Bûche chocolat">
+              <img src="images/buche-chocolat.webp" width="1103" height="526" alt="Bûche chocolat, moulée en relief d'hibiscus et de feuillages, bordée de torsades">
             </figure>
-            <figure class="carousel__item carousel__item--fondu" data-name="Tarte framboise">
-              <img src="images/temp-tarte-framboise.webp" width="848" height="584" alt="Tarte aux framboises fraîches">
+            <figure class="carousel__item carousel__item--fondu" data-name="Bûche vanille">
+              <img src="images/buche-vanille.webp" width="1047" height="523" alt="Bûche vanille ivoire, moulée en relief d'hibiscus et de feuillages, bordée de torsades">
+            </figure>
+            <figure class="carousel__item carousel__item--fondu carousel__item--pot" data-name="Pâte à tartiner praliné vanille">
+              <img src="images/pate-a-tartiner-praline-vanille.webp" width="588" height="703" alt="Pot de pâte à tartiner praliné vanille Bryan Didon, 200 g">
             </figure>
           </div>
           <div class="carousel__controls">
@@ -160,18 +162,33 @@
 
       <div class="duo">
         <article class="card" id="buches" aria-labelledby="buches-titre">
-          <!-- TODO : remplacer la vignette par une photo des bûches -->
-          <img class="card__media" src="images/vignette-palmiers.webp" alt="" width="415" height="630" loading="lazy">
+          <div class="parfums" data-parfums>
+            <div class="parfums__media">
+              <img class="parfums__img is-active" src="images/buche-exotique.webp" width="1079" height="513" loading="lazy" data-parfum="exotique"
+                   alt="Bûche exotique jaune, moulée en relief d'hibiscus et de feuillages">
+              <img class="parfums__img" src="images/buche-chocolat.webp" width="1103" height="526" loading="lazy" data-parfum="chocolat"
+                   alt="Bûche chocolat, moulée en relief d'hibiscus et de feuillages">
+              <img class="parfums__img" src="images/buche-vanille.webp" width="1047" height="523" loading="lazy" data-parfum="vanille"
+                   alt="Bûche vanille ivoire, moulée en relief d'hibiscus et de feuillages">
+            </div>
+            <div class="parfums__choix" role="group" aria-label="Choisir un parfum">
+              <button class="parfum" type="button" aria-pressed="true" data-parfum-btn="exotique"><span class="parfum__pastille" style="--teinte:#f2b81c"></span>Exotique</button>
+              <button class="parfum" type="button" aria-pressed="false" data-parfum-btn="chocolat"><span class="parfum__pastille" style="--teinte:#8a4a32"></span>Chocolat</button>
+              <button class="parfum" type="button" aria-pressed="false" data-parfum-btn="vanille"><span class="parfum__pastille" style="--teinte:#f6e7b4"></span>Vanille</button>
+            </div>
+          </div>
           <h3 id="buches-titre">Les bûches de Noël</h3>
           <p>Vanille, chocolat, exotique. Moulées dans nos propres moules à relief, finies au velours ou d'un nappage miroir.</p>
+          <p class="card__prix">50&nbsp;€ <span>la bûche</span></p>
           <p class="card__note">Collection Noël 2026. Précommandes bientôt ouvertes.</p>
         </article>
 
         <article class="card" id="praline" aria-labelledby="praline-titre">
-          <!-- TODO : remplacer la vignette par une photo du bocal de praliné -->
-          <img class="card__media" src="images/vignette-palais.webp" alt="" width="480" height="370" loading="lazy">
+          <img class="card__media card__media--pot" src="images/pate-a-tartiner-praline-vanille.webp" width="588" height="703" loading="lazy"
+               alt="Pot de pâte à tartiner praliné vanille Bryan Didon, 200 g">
           <h3 id="praline-titre">Le praliné</h3>
-          <p>Moitié amande, moitié noisette, en bocal. Pour la cuillère, la tartine, ou rien du tout.</p>
+          <p>Pâte à tartiner praliné vanille : amandes, sucre et gousses de vanille. Pour la cuillère, la tartine, ou rien du tout.</p>
+          <p class="card__prix">11&nbsp;€ <span>le pot de 200&nbsp;g</span></p>
           <p class="card__note">Bientôt disponible.</p>
         </article>
       </div>

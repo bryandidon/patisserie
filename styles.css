@@ -174,6 +174,7 @@ p { margin: 0 0 1em; }
 }
 .carousel__item--fondu img { -webkit-box-reflect: unset; }
 .carousel__item--fondu { margin-bottom: -4%; }
+.carousel__item--pot img { width: 52%; margin: 0 auto; }
 .carousel__controls:not(:focus-within) {
   position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
 }
@@ -257,6 +258,34 @@ p { margin: 0 0 1em; }
 .card__media { height: 200px; width: auto; margin: 0 auto 1.5rem; }
 .card p { max-width: 30rem; margin-left: auto; margin-right: auto; }
 .card__note { color: var(--encre-doux); font-style: italic; margin-bottom: 0; }
+.card__media--pot { height: 230px; }
+.card__prix { margin-top: 1.25rem; font-size: var(--step-2); line-height: 1.1; color: var(--nuit); }
+.card__prix span { font-size: var(--step-0); color: var(--encre-doux); }
+
+/* Bûches : une photo par parfum, choisie avec les pastilles */
+.parfums { margin-bottom: 1.5rem; }
+.parfums__media { position: relative; aspect-ratio: 1079 / 513; max-width: 30rem; margin: 0 auto 1rem; }
+.parfums__img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
+  opacity: 0; transform: scale(.98);
+  transition: opacity .6s var(--ease), transform .8s var(--ease);
+}
+.parfums__img.is-active { opacity: 1; transform: none; }
+.parfums__choix { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+.parfum {
+  display: inline-flex; align-items: center; gap: .5rem;
+  min-height: 44px; padding: .35rem .95rem .35rem .6rem;
+  border: 1px solid transparent; border-radius: 999px; background: none;
+  font: 500 1.05rem/1 var(--serif); color: var(--encre-doux); cursor: pointer;
+  transition: border-color .25s var(--ease), color .25s var(--ease), background-color .25s var(--ease);
+}
+.parfum:hover { color: var(--nuit); }
+.parfum[aria-pressed="true"] { border-color: var(--trait); color: var(--nuit); background: rgba(255, 255, 255, .6); }
+.parfum__pastille {
+  width: 18px; height: 18px; border-radius: 50%; flex: none;
+  background: var(--teinte); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .12);
+}
+@media (prefers-reduced-motion: reduce) { .parfums__img { transition: none; } }
 
 .section--maison .prose { max-width: 36rem; margin: 0 auto; text-align: center; font-size: var(--step-1); line-height: 1.55; }
 
