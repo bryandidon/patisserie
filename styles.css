@@ -205,6 +205,13 @@ p { margin: 0 0 1em; }
   .carousel__name { min-width: 0; flex: 1; }
 
   .hero__corner { width: 80px; top: 0; opacity: .8; }
+
+  /* Téléphone : bouton menu bien visible devant le feuillage, assorti au bouton panier */
+  .nav__menu { width: 48px; height: 48px; border-radius: 50%; background: var(--nuit); color: #fff; }
+
+  /* Téléphone : l'accueil occupe tout l'écran, la toile posée en bas, entière */
+  .hero { display: flex; flex-direction: column; min-height: 100vh; min-height: 100svh; }
+  .hero__toile { margin-top: auto; padding-top: 1.5rem; }
 }
 
 /* Entrée orchestrée : un seul moment, au chargement */
