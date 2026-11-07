@@ -27,7 +27,6 @@ img { display: block; max-width: 100%; height: auto; }
 :focus-visible { outline: 1px solid var(--nuit); outline-offset: 4px; }
 
 .liens {
-  --toile-w: max(min(100vw, 105vh), 40rem);
   position: relative;
   display: flex; flex-direction: column;
   width: 100%; max-width: 28rem; min-height: 100vh; min-height: 100dvh;
@@ -65,32 +64,23 @@ img { display: block; max-width: 100%; height: auto; }
 .lien--plein:hover { background: #1a3366; border-color: #1a3366; }
 .lien--plein .lien__icone, .lien--plein .lien__chevron { color: #fff; }
 
-/* Toile de Jouy tropicale, en fond bas de page */
-html, body { overflow-x: hidden; }
+/* Toile de Jouy tropicale, en fond plein écran */
 .liens__entete, .liens__liste, .liens__pied { position: relative; z-index: 1; }
 .liens__toile {
-  position: absolute; bottom: 0; left: 50%;
-  width: var(--toile-w); max-width: none;
-  transform: translateX(-50%);
+  position: fixed; inset: 0; z-index: 0;
+  width: 100%; height: 100%; max-width: none;
+  object-fit: cover; object-position: center bottom;
   opacity: .75;
   mix-blend-mode: multiply;
   pointer-events: none; user-select: none;
-  --fondu-v: linear-gradient(to bottom, transparent 10%, #000 35%, #000 88%, transparent 100%);
-  --fondu-h: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-  -webkit-mask-image: var(--fondu-v), var(--fondu-h);
-  -webkit-mask-composite: source-in;
-          mask-image: var(--fondu-v), var(--fondu-h);
-          mask-composite: intersect;
 }
 
 /* Pied de page */
 .liens__pied {
   margin-top: auto; padding-top: 3rem;
-  padding-bottom: calc(var(--toile-w) * .42);
   text-align: center; color: var(--encre-doux); font-size: .95rem;
 }
-.liens__pied img { width: 40px; margin: 0 auto .5rem; opacity: .9; }
-.liens__pied p { margin: 0; text-shadow: 0 0 12px var(--ivoire), 0 0 4px var(--ivoire); }
+.liens__pied p { margin: 0; text-shadow: 0 0 14px var(--ivoire), 0 0 6px var(--ivoire), 0 0 2px var(--ivoire); }
 
 /* Apparition douce des boutons */
 @media (prefers-reduced-motion: no-preference) {
