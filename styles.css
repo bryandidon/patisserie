@@ -212,6 +212,13 @@ p { margin: 0 0 1em; }
   /* Téléphone : l'accueil occupe tout l'écran, la toile posée en bas, entière */
   .hero { display: flex; flex-direction: column; min-height: 100vh; min-height: 100svh; }
   .hero__toile { margin-top: auto; padding-top: 1.5rem; }
+  .hero__inner { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+}
+/* Grands téléphones : carrousel plus présent pour équilibrer l'écran */
+@media (max-width: 699px) and (min-height: 760px) {
+  .carousel__item { width: 48vw; }
+  .carousel__ring { height: 215px; }
+  .hero .pill--cta { margin-top: 1.75rem; }
 }
 
 /* Entrée orchestrée : un seul moment, au chargement */
