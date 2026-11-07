@@ -27,6 +27,8 @@ img { display: block; max-width: 100%; height: auto; }
 :focus-visible { outline: 1px solid var(--nuit); outline-offset: 4px; }
 
 .liens {
+  --toile-w: max(100vw, 40rem);
+  position: relative;
   display: flex; flex-direction: column;
   width: 100%; max-width: 28rem; min-height: 100vh; min-height: 100dvh;
   margin: 0 auto; padding: 3rem 1rem 2rem;
@@ -63,17 +65,33 @@ img { display: block; max-width: 100%; height: auto; }
 .lien--plein:hover { background: #1a3366; border-color: #1a3366; }
 .lien--plein .lien__icone, .lien--plein .lien__chevron { color: #fff; }
 
+/* Toile de Jouy tropicale, en fond bas de page */
+html, body { overflow-x: hidden; }
+.liens__entete, .liens__liste, .liens__pied { position: relative; z-index: 1; }
+.liens__toile {
+  position: absolute; bottom: 0; left: 50%;
+  width: var(--toile-w); max-width: none;
+  transform: translateX(-50%);
+  opacity: .5;
+  pointer-events: none; user-select: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 45%, #000 85%, transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0%, #000 45%, #000 85%, transparent 100%);
+}
+
 /* Pied de page */
 .liens__pied {
   margin-top: auto; padding-top: 3rem;
+  padding-bottom: calc(var(--toile-w) * .3);
   text-align: center; color: var(--encre-doux); font-size: .95rem;
 }
 .liens__pied img { width: 40px; margin: 0 auto .5rem; opacity: .9; }
-.liens__pied p { margin: 0; }
+.liens__pied p { margin: 0; text-shadow: 0 0 12px var(--ivoire), 0 0 4px var(--ivoire); }
 
 /* Apparition douce des boutons */
 @media (prefers-reduced-motion: no-preference) {
   .liens__entete { animation: monte .9s var(--ease) both; }
+  .liens__toile { animation: apparait 1.8s .2s var(--ease) both; }
+  @keyframes apparait { from { opacity: 0; } to { opacity: .5; } }
   .lien { animation: monte .8s var(--ease) both; }
   .lien:nth-child(1) { animation-delay: .15s; }
   .lien:nth-child(2) { animation-delay: .25s; }
