@@ -174,7 +174,6 @@ p { margin: 0 0 1em; }
 }
 .carousel__item--fondu img { -webkit-box-reflect: unset; }
 .carousel__item--fondu { margin-bottom: -4%; }
-.carousel__item--pot img { width: 52%; margin: 0 auto; }
 .carousel__controls:not(:focus-within) {
   position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
 }
