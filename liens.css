@@ -1,0 +1,89 @@
+/* Page « liens » – Bryan Didon, Haute Pâtisserie */
+:root {
+  --ivoire: #f8f4f1;
+  --nuit: #10234b;
+  --encre: #1b2a44;
+  --encre-doux: #4b5872;
+  --or: #b08642;
+  --trait: rgba(176, 134, 66, .55);
+  --serif: "Cormorant Garamond", Garamond, "Times New Roman", serif;
+  --capitale: "Cinzel", "Trajan Pro", "Cormorant Garamond", serif;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  min-height: 100vh; min-height: 100dvh;
+  background: var(--ivoire) url("images/marbre.webp") center top / 2400px auto repeat;
+  color: var(--encre);
+  font-family: var(--serif);
+  font-size: 1.1875rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+:focus-visible { outline: 1px solid var(--nuit); outline-offset: 4px; }
+
+.liens {
+  display: flex; flex-direction: column;
+  width: 100%; max-width: 28rem; min-height: 100vh; min-height: 100dvh;
+  margin: 0 auto; padding: 3rem 1rem 2rem;
+}
+
+/* En-tête */
+.liens__entete { text-align: center; margin-bottom: 2.25rem; }
+.liens__logo { width: 11rem; margin: 0 auto 1.4rem; }
+.liens__lys { display: block; width: 20px; height: 23px; margin: 0 auto .7rem; color: var(--or); }
+.liens__accroche {
+  margin: 0;
+  font-family: var(--capitale); font-size: .82rem;
+  letter-spacing: .26em; text-transform: uppercase; color: var(--nuit);
+}
+
+/* Boutons */
+.liens__liste { display: grid; gap: .9rem; }
+.lien {
+  display: flex; align-items: center; gap: .9rem;
+  min-height: 58px; padding: .7rem 1.25rem .7rem 1.4rem;
+  border: 1px solid var(--trait); border-radius: 999px;
+  background: rgba(255, 255, 255, .72);
+  color: var(--nuit); text-decoration: none;
+  font-size: 1.25rem; font-weight: 500;
+  transition: background-color .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+}
+.lien:hover { background: #fff; border-color: var(--or); }
+.lien:active { transform: translateY(1px); }
+.lien__icone { width: 24px; height: 24px; flex: none; color: var(--or); }
+.lien__texte { flex: 1; text-align: center; }
+.lien__chevron { width: 18px; height: 18px; flex: none; color: var(--or); opacity: .8; }
+
+.lien--plein { background: var(--nuit); border-color: var(--nuit); color: #fff; }
+.lien--plein:hover { background: #1a3366; border-color: #1a3366; }
+.lien--plein .lien__icone, .lien--plein .lien__chevron { color: #fff; }
+
+/* Pied de page */
+.liens__pied {
+  margin-top: auto; padding-top: 3rem;
+  text-align: center; color: var(--encre-doux); font-size: .95rem;
+}
+.liens__pied img { width: 40px; margin: 0 auto .5rem; opacity: .9; }
+.liens__pied p { margin: 0; }
+
+/* Apparition douce des boutons */
+@media (prefers-reduced-motion: no-preference) {
+  .liens__entete { animation: monte .9s var(--ease) both; }
+  .lien { animation: monte .8s var(--ease) both; }
+  .lien:nth-child(1) { animation-delay: .15s; }
+  .lien:nth-child(2) { animation-delay: .25s; }
+  .lien:nth-child(3) { animation-delay: .35s; }
+  .lien:nth-child(4) { animation-delay: .45s; }
+  .lien:nth-child(5) { animation-delay: .55s; }
+  @keyframes monte { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+}
+
+@media (min-width: 48em) {
+  .liens { padding-top: 5rem; }
+  .liens__logo { width: 13rem; }
+}
