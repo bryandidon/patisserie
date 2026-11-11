@@ -275,7 +275,17 @@ p { margin: 0 0 1em; }
 .card__prix { margin-top: 1.25rem; font-size: var(--step-2); line-height: 1.1; color: var(--nuit); }
 .card__prix span { font-size: var(--step-0); color: var(--encre-doux); }
 .card__commande { margin: .25rem 0 1.25rem; font-size: 1.15rem; padding: .65rem 1.6rem; }
-.card__commande[hidden] { display: none; }
+.card__commande-parfum[hidden] { display: none; }
+
+/* Lien discret vers la fiche produit */
+.lien-fiche {
+  display: inline-block; padding: .35rem .1rem;
+  color: var(--nuit); text-decoration: none; font-style: italic;
+  border-bottom: 1px solid var(--or);
+  transition: color .25s var(--ease);
+}
+.lien-fiche:hover { color: var(--or); }
+.feature__text .lien-fiche { margin-top: 1rem; }
 
 /* Bûches : une photo par parfum, choisie avec les pastilles */
 .parfums { margin-bottom: 1.5rem; }
@@ -327,6 +337,68 @@ p { margin: 0 0 1em; }
   color: var(--encre-doux); font-size: var(--step--1);
 }
 .footer__bar p { margin: 0; }
+
+/* ---------- Pages produits (/galette, /buches, /praline) ---------- */
+.produit { max-width: 1240px; margin: 0 auto; padding: clamp(6.5rem, 10vw, 9rem) var(--gap) 0; }
+.retour {
+  display: inline-flex; align-items: center; gap: .4rem; min-height: 44px;
+  color: var(--encre-doux); text-decoration: none; font-size: 1.05rem;
+}
+.retour svg { width: 15px; height: 15px; transform: scaleX(-1); }
+.retour:hover { color: var(--nuit); }
+
+.produit__entete { display: grid; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; margin-top: 1rem; }
+.produit__media { text-align: center; }
+.produit__photo { width: 100%; max-width: 34rem; margin: 0 auto; }
+.produit__photo--pot { max-width: 17rem; }
+.produit__texte { text-align: center; }
+.produit__texte .lys { margin-bottom: .9rem; }
+.produit__titre { font-size: clamp(2.1rem, 1.6rem + 2.4vw, 3.4rem); line-height: 1.08; color: var(--nuit); margin-bottom: .45em; }
+.produit__texte .lead { max-width: 30rem; margin: 0 auto 1.25rem; }
+.produit__texte .prices { max-width: 26rem; margin: 1.5rem auto 2rem; text-align: left; }
+.produit__texte .card__prix { margin: 1.25rem 0 1.5rem; }
+.produit__texte .card__commande { margin: 0 0 1rem; }
+.produit__retrait { color: var(--encre-doux); font-style: italic; font-size: 1.05rem; margin: 0; }
+.produit .parfums__media { max-width: 34rem; }
+@media (min-width: 900px) {
+  .produit__entete { grid-template-columns: 7fr 5fr; }
+  .produit__texte { text-align: left; }
+  .produit__texte .lys { margin-left: 0; }
+  .produit__texte .lead { margin-left: 0; }
+  .produit__texte .prices { margin-left: 0; }
+  .produit__texte .parfums__choix { justify-content: flex-start; }
+}
+
+/* La fiche : composition, ingrédients, allergènes, conservation */
+.fiche { margin-top: var(--section); }
+.fiche[hidden] { display: none; }
+.fiche__grille { display: grid; gap: 0 var(--gap); max-width: 62rem; margin: 0 auto; border-top: 1px solid var(--trait); }
+@media (min-width: 760px) { .fiche__grille { grid-template-columns: 1fr 1fr; } }
+.fiche__bloc { padding: 1.5rem 0 1.4rem; border-bottom: 1px solid var(--trait); }
+.fiche__bloc h3 {
+  margin-bottom: .6rem;
+  font-family: var(--capitale); font-size: .85rem; font-weight: 400;
+  letter-spacing: .24em; text-transform: uppercase; color: var(--or);
+}
+.fiche__bloc p { margin: 0; }
+.fiche__bloc ul { margin: 0; padding-left: 1.1rem; }
+.fiche__bloc--large { grid-column: 1 / -1; }
+.fiche__mention { max-width: 62rem; margin: 1.25rem auto 0; color: var(--encre-doux); font-size: 1rem; font-style: italic; text-align: center; }
+/* Texte en attente des informations de Bryan */
+.a-completer { color: var(--encre-doux); font-style: italic; border-bottom: 1px dashed var(--trait); }
+
+/* Les autres créations */
+.autres { margin-top: var(--section); padding-bottom: var(--section); }
+.autres__liste { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 46rem; margin: 0 auto; }
+.autres__carte {
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: .9rem;
+  padding: 1.5rem 1rem 1.25rem; text-align: center;
+  border: 1px solid var(--trait); background: rgba(255, 255, 255, .35);
+  color: var(--nuit); text-decoration: none; font-size: var(--step-1); line-height: 1.2;
+  transition: background-color .25s var(--ease), border-color .25s var(--ease);
+}
+.autres__carte:hover { background: rgba(255, 255, 255, .7); border-color: var(--or); }
+.autres__carte img { height: 120px; width: auto; max-width: 100%; object-fit: contain; }
 
 /* Titre de l'accueil : volontairement discret */
 #hero-titre { font-size: clamp(.8rem, .7rem + .35vw, 1rem); }

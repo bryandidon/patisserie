@@ -14,7 +14,13 @@ Site vitrine qui présente la marque et **redirige vers l'application de command
 - Application de commande d'un ami : **Takeat**, carte complète `https://takeat.fr/bryan-didon/emporter`.
 - Intégration « vos propres boutons » : script `https://takeat.fr/widget.js` (`data-slug="bryan-didon"`, `data-mode="produits"`, `data-couleur="#10234b"`) en bas de `index.html`.
 - Chaque bouton « Commander » pointe vers le lien du produit (`…/emporter?plat=<id>`) ; un bouton vers toute la carte pointe vers `…/emporter`. Sans le script, ces liens mènent quand même à Takeat.
+- **Ne jamais mettre `data-umami-event` sur un lien Takeat** : Umami suit le lien après le clic et ferait quitter le site. Ces liens portent `data-suivi` / `data-suivi-*`, envoyés à Umami par `script.js`.
+- Le script Takeat est aussi en bas des pages produits.
 - Liens produits : galette `091da5f4-b143-4d4c-8de2-aa8ad6f76f74`, bûche vanille `84724e96-a320-4502-a9fe-34a3eb0c1158`, bûche chocolat `f9de2f43-b2e2-47dc-886b-6cee0001b72b`, bûche exotique `a1e3f6e6-128f-41c9-b348-307a985ca5eb`, pâte à tartiner praliné vanille `74bd453e-48f6-4b58-99b2-41d4fa9a115b`.
+
+## Pages produits
+- `galette.html`, `buches.html` (parfum choisi via `?parfum=exotique|chocolat|vanille`), `praline.html`, servies en `/galette`, `/buches`, `/praline`.
+- Fiche : recette, ingrédients, allergènes, parts/poids, conservation. Les textes manquants sont marqués `<span class="a-completer">`.
 
 ## Statistiques
 - Umami Cloud (sans cookies), script dans le `<head>` de `index.html` et `liens.html`, limité aux domaines `bryandidon.fr` / `www.bryandidon.fr`. Clics suivis via les attributs `data-umami-event`.

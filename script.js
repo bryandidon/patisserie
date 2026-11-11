@@ -157,19 +157,37 @@ if (reveal && toggle) {
   });
 }
 
-// Bûches : changer de parfum
+// Bûches : changer de parfum (accueil et page /buches)
+// La photo, le bouton Commander, la fiche et le lien « Voir la composition » suivent le parfum choisi.
 const parfums = document.querySelector('[data-parfums]');
 if (parfums) {
   const imgs = parfums.querySelectorAll('[data-parfum]');
   const btns = parfums.querySelectorAll('[data-parfum-btn]');
-  btns.forEach((btn) => btn.addEventListener('click', () => {
-    const choix = btn.dataset.parfumBtn;
+  const choisir = (choix) => {
     imgs.forEach((img) => img.classList.toggle('is-active', img.dataset.parfum === choix));
-    btns.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-    // Le bouton Commander suit le parfum choisi
-    document.querySelectorAll('[data-parfum-commande]').forEach((a) => { a.hidden = a.dataset.parfumCommande !== choix; });
-  }));
+    btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.parfumBtn === choix)));
+    document.querySelectorAll('[data-parfum-commande]').forEach((el) => { el.hidden = el.dataset.parfumCommande !== choix; });
+    document.querySelectorAll('[data-parfum-detail]').forEach((el) => { el.hidden = el.dataset.parfumDetail !== choix; });
+    document.querySelectorAll('[data-parfum-lien]').forEach((a) => { a.href = '/buches?parfum=' + choix; });
+  };
+  btns.forEach((btn) => btn.addEventListener('click', () => choisir(btn.dataset.parfumBtn)));
+  // Arrivée depuis l'accueil avec un parfum déjà choisi : /buches?parfum=chocolat
+  const demande = new URLSearchParams(location.search).get('parfum');
+  if (demande && parfums.querySelector('[data-parfum-btn="' + demande + '"]')) choisir(demande);
 }
+
+// Statistiques des boutons Commander (liens Takeat).
+// Ils portent data-suivi et non data-umami-event : Umami, après avoir compté le clic,
+// suit le lien et ferait quitter le site, alors que Takeat ajoute au panier sur place.
+document.addEventListener('click', (e) => {
+  const el = e.target.closest && e.target.closest('[data-suivi]');
+  if (!el) return;
+  const infos = {};
+  [...el.attributes].forEach((a) => {
+    if (a.name.startsWith('data-suivi-')) infos[a.name.slice(11)] = a.value;
+  });
+  try { if (window.umami) window.umami.track(el.dataset.suivi, infos); } catch (err) {}
+}, true);
 
 // Année du pied de page
 const year = document.querySelector('[data-year]');
