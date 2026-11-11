@@ -274,6 +274,8 @@ p { margin: 0 0 1em; }
 .card__media--pot { height: 230px; }
 .card__prix { margin-top: 1.25rem; font-size: var(--step-2); line-height: 1.1; color: var(--nuit); }
 .card__prix span { font-size: var(--step-0); color: var(--encre-doux); }
+.card__commande { margin: .25rem 0 1.25rem; font-size: 1.15rem; padding: .65rem 1.6rem; }
+.card__commande[hidden] { display: none; }
 
 /* Bûches : une photo par parfum, choisie avec les pastilles */
 .parfums { margin-bottom: 1.5rem; }

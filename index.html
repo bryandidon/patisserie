@@ -23,9 +23,9 @@
 <body>
   <!--
     À COMPLÉTER (cherche "TODO" dans ce fichier) :
-    - le lien de l'application de commande (click & collect) : variable ORDER_URL plus bas, et les liens marqués TODO
-    - les liens Instagram, TikTok, Facebook
+    - le lien Facebook
     - l'adresse email de contact
+    Commande : boutons reliés à Takeat (https://takeat.fr/bryan-didon/emporter), script en bas de page.
   -->
 
   <a class="skip" href="#contenu">Aller au contenu</a>
@@ -64,8 +64,7 @@
       <a href="#contact">Contact</a>
     </nav>
 
-    <!-- TODO : remplacer #commander par le lien de l'application de commande -->
-    <a class="pill pill--order" href="#commander" data-umami-event="Commander" data-umami-event-depuis="menu">
+    <a class="pill pill--order" href="https://takeat.fr/bryan-didon/emporter" data-umami-event="Commander" data-umami-event-depuis="menu">
       <svg class="pill__icon" aria-hidden="true"><use href="#sac"/></svg>
       <span class="pill__label">Commander <span>Click &amp; Collect</span></span>
     </a>
@@ -153,7 +152,7 @@
             <div><dt>Moyenne</dt><dd>39&nbsp;€</dd></div>
             <div><dt>Grande</dt><dd>49&nbsp;€</dd></div>
           </dl>
-          <a class="pill pill--cta" href="#commander" data-umami-event="Commander" data-umami-event-depuis="galette">Commander une galette
+          <a class="pill pill--cta" href="https://takeat.fr/bryan-didon/emporter?plat=091da5f4-b143-4d4c-8de2-aa8ad6f76f74" data-umami-event="Commander" data-umami-event-depuis="galette">Commander une galette
             <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
           </a>
         </div>
@@ -179,7 +178,16 @@
           <h3 id="buches-titre">Les bûches de Noël</h3>
           <p>Vanille, chocolat, exotique. Moulées dans nos propres moules à relief, finies au velours ou d'un nappage miroir.</p>
           <p class="card__prix">50&nbsp;€ <span>la bûche</span></p>
-          <p class="card__note">Collection Noël 2026. Précommandes bientôt ouvertes.</p>
+          <a class="pill pill--cta card__commande" href="https://takeat.fr/bryan-didon/emporter?plat=a1e3f6e6-128f-41c9-b348-307a985ca5eb" data-parfum-commande="exotique" data-umami-event="Commander" data-umami-event-depuis="bûches" data-umami-event-parfum="exotique">Commander la bûche exotique
+            <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
+          </a>
+          <a class="pill pill--cta card__commande" href="https://takeat.fr/bryan-didon/emporter?plat=f9de2f43-b2e2-47dc-886b-6cee0001b72b" data-parfum-commande="chocolat" hidden data-umami-event="Commander" data-umami-event-depuis="bûches" data-umami-event-parfum="chocolat">Commander la bûche chocolat
+            <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
+          </a>
+          <a class="pill pill--cta card__commande" href="https://takeat.fr/bryan-didon/emporter?plat=84724e96-a320-4502-a9fe-34a3eb0c1158" data-parfum-commande="vanille" hidden data-umami-event="Commander" data-umami-event-depuis="bûches" data-umami-event-parfum="vanille">Commander la bûche vanille
+            <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
+          </a>
+          <p class="card__note">Collection Noël 2026.</p>
         </article>
 
         <article class="card" id="praline" aria-labelledby="praline-titre">
@@ -188,7 +196,9 @@
           <h3 id="praline-titre">Le praliné</h3>
           <p>Pâte à tartiner praliné vanille : amandes, sucre et gousses de vanille. Pour la cuillère, la tartine, ou rien du tout.</p>
           <p class="card__prix">11&nbsp;€ <span>le pot de 200&nbsp;g</span></p>
-          <p class="card__note">Bientôt disponible.</p>
+          <a class="pill pill--cta card__commande" href="https://takeat.fr/bryan-didon/emporter?plat=74bd453e-48f6-4b58-99b2-41d4fa9a115b" data-umami-event="Commander" data-umami-event-depuis="praliné">Commander le praliné
+            <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
+          </a>
         </article>
       </div>
     </section>
@@ -210,8 +220,7 @@
       <svg class="lys lys--light" aria-hidden="true"><use href="#lys"/></svg>
       <h2 class="title title--light" id="commander-titre">Click &amp; Collect</h2>
       <p>Choisissez vos pièces en ligne, puis retirez-les à l'heure convenue.</p>
-      <!-- TODO : remplacer # par le lien de l'application de commande -->
-      <a class="pill pill--light" href="#" data-umami-event="Commander" data-umami-event-depuis="boutique">
+      <a class="pill pill--light" href="https://takeat.fr/bryan-didon/emporter" data-umami-event="Commander" data-umami-event-depuis="boutique">
         <svg class="pill__icon" aria-hidden="true"><use href="#sac"/></svg>
         Ouvrir la boutique en ligne
       </a>
@@ -225,10 +234,11 @@
       </header>
       <p class="contact__intro">Les nouvelles créations sortent d'abord sur les réseaux.</p>
       <ul class="social" aria-label="Réseaux sociaux">
-        <!-- TODO : remplacer les # par tes liens -->
-        <li><a href="#" data-umami-event="Réseau social" data-umami-event-reseau="instagram" data-umami-event-depuis="site">Instagram</a></li>
-        <li><a href="#" data-umami-event="Réseau social" data-umami-event-reseau="tiktok" data-umami-event-depuis="site">TikTok</a></li>
-        <li><a href="#" data-umami-event="Réseau social" data-umami-event-reseau="facebook" data-umami-event-depuis="site">Facebook</a></li>
+        <li><a href="https://www.instagram.com/cookingbyjones/" target="_blank" rel="noopener" data-umami-event="Réseau social" data-umami-event-reseau="instagram" data-umami-event-depuis="site">Instagram</a></li>
+        <li><a href="https://www.tiktok.com/@cookingbyjones" target="_blank" rel="noopener" data-umami-event="Réseau social" data-umami-event-reseau="tiktok" data-umami-event-depuis="site">TikTok</a></li>
+        <!-- TODO : décommenter et remplacer # par le lien Facebook
+        <li><a href="#" target="_blank" rel="noopener" data-umami-event="Réseau social" data-umami-event-reseau="facebook" data-umami-event-depuis="site">Facebook</a></li>
+        -->
       </ul>
       <!-- TODO : email de contact, ex. <p class="contact__mail"><a href="mailto:contact@bryandidon.fr">contact@bryandidon.fr</a></p> -->
     </section>
@@ -242,5 +252,8 @@
   </footer>
 
   <script src="script.js"></script>
+  <!-- Commande Click & Collect (Takeat, mode "produits") : chaque bouton Commander ajoute au panier sans quitter le site.
+       Sans ce script, les boutons restent de simples liens vers la carte Takeat. -->
+  <script src="https://takeat.fr/widget.js" data-slug="bryan-didon" data-mode="produits" data-couleur="#10234b" defer></script>
 </body>
 </html>

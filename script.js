@@ -166,6 +166,8 @@ if (parfums) {
     const choix = btn.dataset.parfumBtn;
     imgs.forEach((img) => img.classList.toggle('is-active', img.dataset.parfum === choix));
     btns.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+    // Le bouton Commander suit le parfum choisi
+    document.querySelectorAll('[data-parfum-commande]').forEach((a) => { a.hidden = a.dataset.parfumCommande !== choix; });
   }));
 }
 
