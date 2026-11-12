@@ -277,6 +277,48 @@ p { margin: 0 0 1em; }
 .card__commande { margin: .25rem 0 1.25rem; font-size: 1.15rem; padding: .65rem 1.6rem; }
 .card__commande-parfum[hidden] { display: none; }
 
+/* Bûches : ce qu'il y a dedans, selon le parfum choisi */
+.gout { max-width: 24rem; margin: 1.5rem auto .5rem; text-align: left; }
+.gout[hidden] { display: none; }
+.gout__parts {
+  margin: 0 0 1.25rem; text-align: center;
+  font-family: var(--capitale); font-size: .8rem; letter-spacing: .24em; text-transform: uppercase; color: var(--or);
+}
+.gout__titre {
+  margin: 0 0 .75rem; text-align: center;
+  font-size: .95rem; font-style: italic; color: var(--encre-doux);
+}
+.gout__titre::before, .gout__titre::after { content: "—"; margin: 0 .6rem; color: var(--trait); font-style: normal; }
+.gout__couches { list-style: none; margin: 0 0 1.75rem; padding: 0 0 0 1.4rem; border-left: 1px solid var(--trait); }
+.gout__couches li { position: relative; padding: .2rem 0 .7rem; line-height: 1.4; color: var(--encre-doux); font-size: 1.05rem; }
+.gout__couches li:last-child { padding-bottom: .1rem; }
+.gout__couches li::before {
+  content: ""; position: absolute; left: calc(-1.4rem - 4px); top: .62rem;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--ivoire); border: 1px solid var(--or);
+}
+.gout__couche { display: block; color: var(--nuit); font-weight: 500; font-size: 1.12rem; }
+.gout__vide { margin: 0 0 1rem; text-align: center; }
+
+/* Pictogrammes allergènes et garanties */
+.pictos { display: flex; flex-wrap: wrap; justify-content: center; gap: .9rem .4rem; list-style: none; margin: 0 0 1.25rem; padding: 0; }
+.picto {
+  display: flex; flex-direction: column; align-items: center; gap: .45rem; width: 4.6rem;
+  font-family: var(--capitale); font-size: .58rem; letter-spacing: .14em; line-height: 1.35; text-transform: uppercase; text-align: center;
+  color: var(--encre-doux);
+}
+.picto__rond {
+  display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%;
+  border: 1px solid var(--trait); background: rgba(255, 255, 255, .55); color: var(--nuit);
+}
+.picto__rond svg { width: 26px; height: 26px; }
+.pictos--garanties { padding-top: 1.1rem; border-top: 1px solid rgba(176, 134, 66, .3); }
+.picto--garantie .picto__rond { background: var(--nuit); border-color: var(--nuit); color: var(--or-clair); }
+@media (prefers-reduced-motion: no-preference) {
+  .gout:not([hidden]) { animation: gout-apparait .5s var(--ease); }
+  @keyframes gout-apparait { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
+
 /* Lien discret vers la fiche produit */
 .lien-fiche {
   display: inline-block; padding: .35rem .1rem;
@@ -367,6 +409,7 @@ p { margin: 0 0 1em; }
   .produit__texte .lead { margin-left: 0; }
   .produit__texte .prices { margin-left: 0; }
   .produit__texte .parfums__choix { justify-content: flex-start; }
+  .produit__texte .gout { margin-left: 0; }
 }
 
 /* La fiche : composition, ingrédients, allergènes, conservation */

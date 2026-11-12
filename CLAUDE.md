@@ -22,6 +22,7 @@ Site vitrine qui présente la marque et **redirige vers l'application de command
 - Catalogue `creations.html` (`/creations`) : toutes les créations en cartes ; c'est la cible du lien « Nos créations » du menu.
 - **Prix d'un produit à plusieurs tailles : toujours écrit « à partir de » le plus petit prix** dans les listes (ex. galette « à partir de 26 € »).
 - `galette.html`, `buches.html` (parfum choisi via `?parfum=exotique|chocolat|vanille`), `praline.html`, servies en `/galette`, `/buches`, `/praline`.
+- Bûches : la description de chaque parfum (parts, couches de haut en bas, pictogrammes allergènes et garanties « sans porc »…) est **dans `index.html` et dans `buches.html`** : modifier les deux. Pictogrammes : symboles `#p-*` du sprite SVG.
 - Fiche : recette, ingrédients, allergènes, parts/poids, conservation. Les textes manquants sont marqués `<span class="a-completer">`.
 
 ## Statistiques
