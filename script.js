@@ -28,7 +28,7 @@ if (menuBtn && menu) {
 
 // Lien actif selon la section visible
 const links = document.querySelectorAll('.nav__side a');
-const sections = ['top', 'creations', 'maison', 'contact'].map((id) => document.getElementById(id)).filter(Boolean);
+const sections = ['top', 'maison', 'contact'].map((id) => document.getElementById(id)).filter(Boolean);
 if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {

@@ -407,6 +407,39 @@ p { margin: 0 0 1em; }
 .autres__carte:hover { background: rgba(255, 255, 255, .7); border-color: var(--or); }
 .autres__carte img { height: 120px; width: auto; max-width: 100%; object-fit: contain; }
 
+/* ---------- Catalogue (/creations) ---------- */
+.vitrine__entete { text-align: center; margin: 1rem 0 clamp(2.5rem, 6vw, 4rem); }
+.vitrine__entete .title { font-size: var(--step-3); }
+.vitrine__intro { max-width: 32rem; margin: 1.25rem auto 0; font-size: var(--step-1); line-height: 1.45; color: var(--encre-doux); }
+.vitrine {
+  display: grid; gap: 1.25rem; padding-bottom: var(--section);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .vitrine { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1000px) { .vitrine { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; } }
+.vitrine__carte {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  padding: 1.75rem 1.25rem 1.5rem;
+  border: 1px solid var(--trait); background: rgba(255, 255, 255, .35);
+  transition: background-color .25s var(--ease), border-color .25s var(--ease);
+}
+.vitrine__carte:hover { background: rgba(255, 255, 255, .6); border-color: var(--or); }
+.vitrine__media { display: block; width: 100%; height: 200px; margin-bottom: 1.25rem; }
+.vitrine__media img { width: 100%; height: 100%; object-fit: contain; transition: transform .6s var(--ease); }
+.vitrine__carte:hover .vitrine__media img { transform: scale(1.03); }
+.vitrine__saison {
+  margin: 0 0 .5rem;
+  font-family: var(--capitale); font-size: .75rem; letter-spacing: .24em; text-transform: uppercase; color: var(--or);
+}
+.vitrine__nom { font-size: var(--step-2); line-height: 1.15; color: var(--nuit); margin-bottom: .45rem; }
+.vitrine__nom a { text-decoration: none; }
+.vitrine__nom a:hover { color: var(--or); }
+.vitrine__desc { margin: 0 0 1rem; color: var(--encre-doux); max-width: 22rem; }
+.vitrine__prix { margin: auto 0 1.1rem; font-size: var(--step-2); line-height: 1.1; color: var(--nuit); }
+.vitrine__prix span { font-size: var(--step-0); font-style: italic; color: var(--encre-doux); }
+.vitrine__carte .card__commande { margin: 0 0 .5rem; }
+@media (prefers-reduced-motion: reduce) { .vitrine__media img { transition: none; } }
+
 /* Titre de l'accueil : volontairement discret */
 #hero-titre { font-size: clamp(.8rem, .7rem + .35vw, 1rem); }
 

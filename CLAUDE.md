@@ -19,6 +19,8 @@ Site vitrine qui présente la marque et **redirige vers l'application de command
 - Liens produits : galette `091da5f4-b143-4d4c-8de2-aa8ad6f76f74`, bûche vanille `84724e96-a320-4502-a9fe-34a3eb0c1158`, bûche chocolat `f9de2f43-b2e2-47dc-886b-6cee0001b72b`, bûche exotique `a1e3f6e6-128f-41c9-b348-307a985ca5eb`, pâte à tartiner praliné vanille `74bd453e-48f6-4b58-99b2-41d4fa9a115b`.
 
 ## Pages produits
+- Catalogue `creations.html` (`/creations`) : toutes les créations en cartes ; c'est la cible du lien « Nos créations » du menu.
+- **Prix d'un produit à plusieurs tailles : toujours écrit « à partir de » le plus petit prix** dans les listes (ex. galette « à partir de 26 € »).
 - `galette.html`, `buches.html` (parfum choisi via `?parfum=exotique|chocolat|vanille`), `praline.html`, servies en `/galette`, `/buches`, `/praline`.
 - Fiche : recette, ingrédients, allergènes, parts/poids, conservation. Les textes manquants sont marqués `<span class="a-completer">`.
 
