@@ -284,6 +284,8 @@ p { margin: 0 0 1em; }
   margin: 0 0 1.25rem; text-align: center;
   font-family: var(--capitale); font-size: .8rem; letter-spacing: .24em; text-transform: uppercase; color: var(--or);
 }
+.gout__parts--seul { margin: 1.5rem 0 0; }
+.gout__parts--seul + .card__prix { margin-top: .6rem; }
 .gout__titre {
   margin: 0 0 .75rem; text-align: center;
   font-size: .95rem; font-style: italic; color: var(--encre-doux);
@@ -410,6 +412,7 @@ p { margin: 0 0 1em; }
   .produit__texte .prices { margin-left: 0; }
   .produit__texte .parfums__choix { justify-content: flex-start; }
   .produit__texte .gout { margin-left: 0; }
+  .produit__texte .gout__parts--seul { text-align: left; }
 }
 
 /* La fiche : composition, ingrédients, allergènes, conservation */
