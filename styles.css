@@ -372,9 +372,16 @@ p { margin: 0 0 1em; }
 /* La fiche : composition, ingrédients, allergènes, conservation */
 .fiche { margin-top: var(--section); }
 .fiche[hidden] { display: none; }
-.fiche__grille { display: grid; gap: 0 var(--gap); max-width: 62rem; margin: 0 auto; border-top: 1px solid var(--trait); }
+.fiche__grille {
+  display: grid; gap: 0 var(--gap); max-width: 62rem; margin: 0 auto;
+  padding: .5rem clamp(1.25rem, 4vw, 3rem);
+  border: 1px solid var(--trait);
+  background: rgba(255, 255, 255, .35);
+}
 @media (min-width: 760px) { .fiche__grille { grid-template-columns: 1fr 1fr; } }
-.fiche__bloc { padding: 1.5rem 0 1.4rem; border-bottom: 1px solid var(--trait); }
+.fiche__bloc { padding: 1.5rem 0 1.4rem; border-bottom: 1px solid rgba(176, 134, 66, .3); }
+.fiche__bloc:last-child { border-bottom: 0; }
+@media (min-width: 760px) { .fiche__bloc:nth-last-child(2) { border-bottom: 0; } }
 .fiche__bloc h3 {
   margin-bottom: .6rem;
   font-family: var(--capitale); font-size: .85rem; font-weight: 400;
