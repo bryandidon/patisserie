@@ -92,16 +92,12 @@
 
     <article class="produit__entete" aria-labelledby="produit-titre">
       <div class="produit__media">
-        <figure class="reveal" data-reveal>
-          <img class="reveal__img reveal__img--outside" src="images/galette-entiere.webp" width="1535" height="1024"
+        <div class="produit__photos">
+          <img class="produit__photo" src="images/galette-entiere.webp" width="1535" height="1024"
                alt="Galette des rois tressée, vue de trois quarts">
-          <img class="reveal__img reveal__img--inside" src="images/galette-coupe.webp" width="1535" height="1024"
+          <img class="produit__photo" src="images/galette-coupe.webp" width="1535" height="1024" loading="lazy"
                alt="Galette des rois coupée en deux : le feuilletage et la crème d'amande">
-        </figure>
-        <button class="link-btn" type="button" aria-pressed="false" data-reveal-toggle data-umami-event="Galette : voir entière ou coupe">
-          <span data-label-closed>Voir la coupe</span>
-          <span data-label-open hidden>Voir la galette entière</span>
-        </button>
+        </div>
       </div>
       <div class="produit__texte">
         <svg class="lys" aria-hidden="true"><use href="#lys"/></svg>
