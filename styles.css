@@ -262,7 +262,10 @@ p { margin: 0 0 1em; }
 .prices dd { margin: 0; font-size: var(--step-2); line-height: 1.1; color: var(--nuit); }
 
 .duo { display: grid; gap: var(--gap); margin-top: var(--section); }
-@media (min-width: 760px) { .duo { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 760px) {
+  .duo { grid-template-columns: 1fr 1fr; }
+  .duo > #buches { grid-row: span 2; }
+}
 .card {
   text-align: center; padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 3vw, 2.5rem);
   border: 1px solid var(--trait);
@@ -396,6 +399,10 @@ p { margin: 0 0 1em; }
 .produit__photo { width: 100%; max-width: 34rem; margin: 0 auto; }
 .produit__photo--pot { max-width: 17rem; }
 .produit__photos { display: grid; gap: clamp(.5rem, 2vw, 1.25rem); }
+/* Deux photos verticales côte à côte (vanille) */
+.produit__photos--duo { grid-template-columns: minmax(0, 446fr) minmax(0, 606fr); align-items: end; max-width: 30rem; margin: 0 auto; }
+/* Photo sur fond blanc : le blanc se fond dans le marbre */
+.produit__photo--fond-blanc, .card__media--fond-blanc, .vitrine__media img[src*="vanille-"], .autres__carte img[src*="vanille-"] { mix-blend-mode: multiply; filter: brightness(1.04); }
 .produit__texte { text-align: center; }
 .produit__texte .lys { margin-bottom: .9rem; }
 .produit__titre { font-size: clamp(2.1rem, 1.6rem + 2.4vw, 3.4rem); line-height: 1.08; color: var(--nuit); margin-bottom: .45em; }
@@ -443,7 +450,9 @@ p { margin: 0 0 1em; }
 
 /* Les autres créations */
 .autres { margin-top: var(--section); padding-bottom: var(--section); }
-.autres__liste { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 46rem; margin: 0 auto; }
+.autres__liste { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; max-width: 60rem; margin: 0 auto; }
+.autres__liste > * { flex: 0 1 calc(50% - .5rem); }
+@media (min-width: 900px) { .autres__liste > * { flex-basis: calc(33.333% - .67rem); } }
 .autres__carte {
   display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: .9rem;
   padding: 1.5rem 1rem 1.25rem; text-align: center;
