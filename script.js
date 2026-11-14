@@ -176,6 +176,28 @@ if (parfums) {
   if (demande && parfums.querySelector('[data-parfum-btn="' + demande + '"]')) choisir(demande);
 }
 
+// Bouton « Commander Click & Collect » : panier vide -> la liste des créations ;
+// panier rempli -> on laisse Takeat ouvrir le panier sur le côté.
+// Le nombre d'articles est celui que le script Takeat garde dans le navigateur.
+const articlesAuPanier = () => {
+  try {
+    const etat = JSON.parse(localStorage.getItem('takeat:etat:bryan-didon') || 'null');
+    return (etat && Number(etat.articles)) || 0;
+  } catch (err) { return 0; }
+};
+// Écouté sur window, en capture : passe avant le script Takeat (écouté sur document).
+window.addEventListener('click', (e) => {
+  const a = e.target.closest && e.target.closest('[data-panier-ou-catalogue]');
+  if (!a || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  if (articlesAuPanier() > 0) return;
+  e.preventDefault();
+  e.stopPropagation();
+  try { if (window.umami) window.umami.track('Commander', { depuis: a.dataset.suiviDepuis || '', vers: 'catalogue (panier vide)' }); } catch (err) {}
+  const vitrine = document.querySelector('.vitrine');
+  if (vitrine) window.scrollTo({ top: 0, behavior: 'smooth' });
+  else location.href = '/creations';
+}, true);
+
 // Statistiques des boutons Commander (liens Takeat).
 // Ils portent data-suivi et non data-umami-event : Umami, après avoir compté le clic,
 // suit le lien et ferait quitter le site, alors que Takeat ajoute au panier sur place.
