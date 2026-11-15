@@ -458,6 +458,30 @@ p { margin: 0 0 1em; }
 .maison__texte--intro { margin-top: 1.5rem; text-align: center; color: var(--nuit); }
 .maison__partie { margin-top: var(--section); }
 .maison__action { margin: 2rem 0 0; text-align: center; }
+/* Images d'ambiance, en attendant les photos de Bryan */
+.maison__toile { width: max(100%, 640px); max-width: none; margin: clamp(-4rem, -4vw, -1rem) 0 0 50%; transform: translateX(-50%); opacity: .85; pointer-events: none; }
+.maison__partie { position: relative; }
+.maison__entete + .maison__partie { margin-top: clamp(1.5rem, 4vw, 3rem); }
+.maison__gravure { display: block; mix-blend-mode: multiply; opacity: .9; pointer-events: none; }
+.maison__gravure--palais { width: min(70%, 15rem); margin: 0 auto 1.75rem; }
+.maison__gravure--palmiers { display: none; }
+@media (min-width: 1000px) {
+  .maison__gravure { position: absolute; bottom: 0; margin: 0; }
+  .maison__gravure--palais { width: 17rem; right: calc(50% + 20rem); left: auto; }
+  .maison__gravure--palmiers { display: block; width: 11rem; left: calc(50% + 21rem); }
+}
+.maison__vignettes { list-style: none; padding: 0; margin: 2.25rem auto 0; max-width: 46rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+@media (min-width: 640px) { .maison__vignettes { grid-template-columns: repeat(4, 1fr); } }
+.maison__vignettes a {
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: .7rem; height: 100%;
+  padding: 1.1rem .75rem 1rem; text-align: center;
+  border: 1px solid var(--trait); background: rgba(255, 255, 255, .35);
+  color: var(--nuit); text-decoration: none; font-size: var(--step-0); line-height: 1.2;
+  transition: background-color .25s var(--ease), border-color .25s var(--ease);
+}
+.maison__vignettes a:hover { background: rgba(255, 255, 255, .7); border-color: var(--or); }
+.maison__vignettes img { height: 90px; width: auto; max-width: 100%; object-fit: contain; }
+.maison__vignettes img[src*="vanille-"] { mix-blend-mode: multiply; filter: brightness(1.04); }
 
 /* Les autres créations */
 .autres { margin-top: var(--section); padding-bottom: var(--section); }
