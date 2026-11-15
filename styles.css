@@ -264,7 +264,19 @@ p { margin: 0 0 1em; }
 .duo { display: grid; gap: var(--gap); margin-top: var(--section); }
 @media (min-width: 760px) {
   .duo { grid-template-columns: 1fr 1fr; }
-  .duo > #buches { grid-row: span 2; }
+  .duo > #buches { grid-row: span 3; }
+  /* Petites cartes à droite de la bûche : photo à gauche, texte à droite */
+  .duo > .card:not(#buches) {
+    display: grid; grid-template-columns: 7.5rem 1fr; column-gap: 1.5rem; align-content: center;
+    text-align: left; padding: 1.75rem 1.75rem;
+  }
+  .duo > .card:not(#buches) > .card__media { grid-row: 1 / span 6; align-self: center; height: auto; max-height: 170px; width: 100%; object-fit: contain; margin: 0; }
+  .duo > .card:not(#buches) > * { grid-column: 2; }
+  .duo > .card:not(#buches) > .card__media { grid-column: 1; }
+  .duo > .card:not(#buches) h3 { margin-top: 0; }
+  .duo > .card:not(#buches) p { margin-left: 0; margin-right: 0; }
+  .duo > .card:not(#buches) .card__prix { margin-top: .5rem; }
+  .duo > .card:not(#buches) .card__commande { justify-self: start; margin: .25rem 0 .75rem; }
 }
 .card {
   text-align: center; padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 3vw, 2.5rem);
@@ -447,7 +459,8 @@ p { margin: 0 0 1em; }
 /* Deux photos verticales côte à côte (vanille) */
 .produit__photos--duo { grid-template-columns: minmax(0, 446fr) minmax(0, 606fr); align-items: end; max-width: 30rem; margin: 0 auto; }
 /* Photo sur fond blanc : le blanc se fond dans le marbre */
-.produit__photo--fond-blanc, .card__media--fond-blanc, .vitrine__media img[src*="vanille-"], .autres__carte img[src*="vanille-"] { mix-blend-mode: multiply; filter: brightness(1.04); }
+.produit__photo--fond-blanc, .card__media--fond-blanc, .vitrine__media img[src*="vanille-"], .autres__carte img[src*="vanille-"],
+.vitrine__media img[src*="gianduja"], .autres__carte img[src*="gianduja"] { mix-blend-mode: multiply; filter: brightness(1.04); }
 .produit__texte { text-align: center; }
 .produit__texte .lys { margin-bottom: .9rem; }
 .produit__titre { font-size: clamp(2.1rem, 1.6rem + 2.4vw, 3.4rem); line-height: 1.08; color: var(--nuit); margin-bottom: .45em; }
@@ -487,6 +500,7 @@ p { margin: 0 0 1em; }
   letter-spacing: .24em; text-transform: uppercase; color: var(--or);
 }
 .fiche__bloc p { margin: 0; }
+.fiche__bloc .pictos { justify-content: flex-start; margin: .9rem 0 0; }
 .fiche__bloc ul { margin: 0; padding-left: 1.1rem; }
 .fiche__bloc--large { grid-column: 1 / -1; }
 .fiche__mention { max-width: 62rem; margin: 1.25rem auto 0; color: var(--encre-doux); font-size: 1rem; font-style: italic; text-align: center; }
@@ -515,8 +529,9 @@ p { margin: 0 0 1em; }
   .maison__gravure--palais { width: 17rem; right: calc(50% + 20rem); left: auto; }
   .maison__gravure--palmiers { display: block; width: 11rem; left: calc(50% + 21rem); }
 }
-.maison__vignettes { list-style: none; padding: 0; margin: 2.25rem auto 0; max-width: 46rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-@media (min-width: 640px) { .maison__vignettes { grid-template-columns: repeat(4, 1fr); } }
+.maison__vignettes { list-style: none; padding: 0; margin: 2.25rem auto 0; max-width: 54rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+.maison__vignettes > li { flex: 0 1 calc(50% - .5rem); }
+@media (min-width: 640px) { .maison__vignettes > li { flex-basis: calc(20% - .8rem); } }
 .maison__vignettes a {
   display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: .7rem; height: 100%;
   padding: 1.1rem .75rem 1rem; text-align: center;
@@ -526,7 +541,7 @@ p { margin: 0 0 1em; }
 }
 .maison__vignettes a:hover { background: rgba(255, 255, 255, .7); border-color: var(--or); }
 .maison__vignettes img { height: 90px; width: auto; max-width: 100%; object-fit: contain; }
-.maison__vignettes img[src*="vanille-"] { mix-blend-mode: multiply; filter: brightness(1.04); }
+.maison__vignettes img[src*="vanille-"], .maison__vignettes img[src*="gianduja"] { mix-blend-mode: multiply; filter: brightness(1.04); }
 
 /* ---------- Contact (/contact) ---------- */
 .contact { max-width: 40rem; margin: clamp(2rem, 5vw, 3.5rem) auto 0; padding: clamp(1.5rem, 4vw, 2.75rem); border: 1px solid var(--trait); background: rgba(255, 255, 255, .45); }
@@ -564,7 +579,7 @@ p { margin: 0 0 1em; }
 .autres { margin-top: var(--section); padding-bottom: var(--section); }
 .autres__liste { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; max-width: 60rem; margin: 0 auto; }
 .autres__liste > * { flex: 0 1 calc(50% - .5rem); }
-@media (min-width: 900px) { .autres__liste > * { flex-basis: calc(33.333% - .67rem); } }
+@media (min-width: 900px) { .autres__liste > * { flex-basis: calc(25% - .75rem); } }
 .autres__carte {
   display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: .9rem;
   padding: 1.5rem 1rem 1.25rem; text-align: center;
@@ -584,7 +599,12 @@ p { margin: 0 0 1em; }
   grid-template-columns: 1fr;
 }
 @media (min-width: 640px) { .vitrine { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 1000px) { .vitrine { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; } }
+@media (min-width: 640px) and (max-width: 999px) { .vitrine__carte:last-child:nth-child(2n+1) { grid-column: 1 / -1; justify-self: center; width: calc(50% - .75rem); } }
+@media (min-width: 1000px) {
+  .vitrine { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  /* Dernière carte seule sur sa ligne : centrée */
+  .vitrine__carte:last-child:nth-child(3n+1) { grid-column: 2; }
+}
 .vitrine__carte {
   display: flex; flex-direction: column; align-items: center; text-align: center;
   padding: 1.75rem 1.25rem 1.5rem;
