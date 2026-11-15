@@ -448,6 +448,17 @@ p { margin: 0 0 1em; }
 /* Texte en attente des informations de Bryan */
 .a-completer { color: var(--encre-doux); font-style: italic; border-bottom: 1px dashed var(--trait); }
 
+/* ---------- La Maison (/maison) ---------- */
+.maison { max-width: 1240px; margin: 0 auto; padding: clamp(6.5rem, 10vw, 9rem) var(--gap) var(--section); }
+.maison__entete { text-align: center; margin: 1rem 0 0; }
+.maison__entete .title { font-size: var(--step-3); }
+.maison__texte { max-width: 36rem; margin: 0 auto; font-size: var(--step-1); line-height: 1.6; }
+.maison__texte p { margin: 0 0 1.1em; }
+.maison__texte p:last-child { margin-bottom: 0; }
+.maison__texte--intro { margin-top: 1.5rem; text-align: center; color: var(--nuit); }
+.maison__partie { margin-top: var(--section); }
+.maison__action { margin: 2rem 0 0; text-align: center; }
+
 /* Les autres créations */
 .autres { margin-top: var(--section); padding-bottom: var(--section); }
 .autres__liste { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; max-width: 60rem; margin: 0 auto; }
