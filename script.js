@@ -323,7 +323,7 @@ document.querySelectorAll('form[data-newsletter]').forEach(nlBrancher);
       '<svg class="lys" aria-hidden="true"><use href="#lys"/></svg>' +
       '<p class="nl-pop__surtitre">Newsletter</p>' +
       '<h2 class="nl-pop__titre" id="nl-pop-titre" tabindex="-1" autofocus>Les nouvelles créations, en avant-première</h2>' +
-      '<p class="nl-pop__texte">Galettes, bûches, collections de saison : soyez prévenu avant tout le monde.</p>' +
+      '<p class="nl-pop__texte">Nouveautés, avant-premières et offres exclusives : soyez les premiers informés.</p>' +
       '<form class="nl-pop__form" data-newsletter="pop-up" novalidate>' +
         '<input type="checkbox" name="botcheck" class="formulaire__piege" tabindex="-1" autocomplete="off" aria-hidden="true">' +
         '<label class="sr" for="nl-pop-email">Votre email</label>' +
