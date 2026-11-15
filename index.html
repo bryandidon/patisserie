@@ -137,156 +137,97 @@
       <img class="hero__toile" src="images/toile-cobalt.webp" alt="" width="2102" height="1024">
     </section>
 
-    <!-- Nos créations -->
+    <!-- Nos créations : une création « à la une », puis le reste de la carte en aperçu.
+         Le détail de chaque création (couches, allergènes…) est sur sa page, pas ici.
+         Pour changer la création à la une (ex. la galette en janvier), remplacer le bloc <article class="une">. -->
     <section class="section" id="creations" aria-labelledby="creations-titre">
       <header class="section__head">
         <svg class="lys" aria-hidden="true"><use href="#lys"/></svg>
         <h2 class="title" id="creations-titre">Nos créations</h2>
       </header>
 
-      <article class="feature" id="galette" aria-labelledby="galette-titre">
-        <div class="feature__media">
-          <figure class="reveal" data-reveal>
-            <img class="reveal__img reveal__img--outside" src="images/galette-coupe.webp" width="1535" height="1024" loading="lazy"
-                 alt="Galette des rois coupée en deux : le feuilletage et la crème d'amande">
-            <img class="reveal__img reveal__img--inside" src="images/galette-entiere.webp" width="1535" height="1024" loading="lazy"
-                 alt="Galette des rois tressée, vue de trois quarts">
-          </figure>
-          <button class="link-btn" type="button" aria-pressed="false" data-reveal-toggle data-umami-event="Galette : voir entière ou coupe">
-            <span data-label-closed>Voir la galette entière</span>
-            <span data-label-open hidden>Voir la coupe</span>
-          </button>
-        </div>
-        <div class="feature__text">
-          <h3 id="galette-titre">La galette des rois</h3>
-          <p class="lead">Pâte feuilletée levée, tressée à la main. Proposée en janvier, pour l'Épiphanie et tout le mois qui suit.</p>
-          <dl class="prices" aria-label="Formats et prix">
-            <div><dt>Petite</dt><dd>26&nbsp;€</dd></div>
-            <div><dt>Moyenne</dt><dd>39&nbsp;€</dd></div>
-            <div><dt>Grande</dt><dd>49&nbsp;€</dd></div>
-          </dl>
-          <a class="pill pill--cta" href="https://takeat.fr/bryan-didon/emporter?plat=091da5f4-b143-4d4c-8de2-aa8ad6f76f74" data-suivi="Commander" data-suivi-depuis="galette">Commander une galette
-            <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
-          </a>
-          <p><a class="lien-fiche" href="/galette">Voir la composition</a></p>
-        </div>
-      </article>
-
-      <div class="duo">
-        <article class="card" id="buches" aria-labelledby="buches-titre">
-          <div class="parfums" data-parfums>
-            <div class="parfums__media">
-              <img class="parfums__img is-active" src="images/buche-exotique.webp" width="1079" height="513" loading="lazy" data-parfum="exotique"
-                   alt="Bûche exotique jaune, moulée en relief d'hibiscus et de feuillages">
-              <img class="parfums__img" src="images/buche-chocolat.webp" width="1103" height="526" loading="lazy" data-parfum="chocolat"
-                   alt="Bûche chocolat, moulée en relief d'hibiscus et de feuillages">
-              <img class="parfums__img" src="images/buche-vanille.webp" width="1047" height="523" loading="lazy" data-parfum="vanille"
-                   alt="Bûche vanille ivoire, moulée en relief d'hibiscus et de feuillages">
-            </div>
-            <div class="parfums__choix" role="group" aria-label="Choisir un parfum">
-              <button class="parfum" type="button" aria-pressed="true" data-parfum-btn="exotique" data-umami-event="Parfum de bûche" data-umami-event-parfum="exotique"><span class="parfum__pastille" style="--teinte:#f2b81c"></span>Exotique</button>
-              <button class="parfum" type="button" aria-pressed="false" data-parfum-btn="chocolat" data-umami-event="Parfum de bûche" data-umami-event-parfum="chocolat"><span class="parfum__pastille" style="--teinte:#8a4a32"></span>Chocolat</button>
-              <button class="parfum" type="button" aria-pressed="false" data-parfum-btn="vanille" data-umami-event="Parfum de bûche" data-umami-event-parfum="vanille"><span class="parfum__pastille" style="--teinte:#f6e7b4"></span>Vanille</button>
-            </div>
+      <article class="une" id="buches" aria-labelledby="buches-titre">
+        <div class="une__media parfums" data-parfums>
+          <div class="parfums__media">
+            <img class="parfums__img is-active" src="images/buche-exotique.webp" width="1079" height="513" loading="lazy" data-parfum="exotique"
+                 alt="Bûche exotique jaune, moulée en relief d'hibiscus et de feuillages">
+            <img class="parfums__img" src="images/buche-chocolat.webp" width="1103" height="526" loading="lazy" data-parfum="chocolat"
+                 alt="Bûche chocolat, moulée en relief d'hibiscus et de feuillages">
+            <img class="parfums__img" src="images/buche-vanille.webp" width="1047" height="523" loading="lazy" data-parfum="vanille"
+                 alt="Bûche vanille ivoire, moulée en relief d'hibiscus et de feuillages">
           </div>
+          <div class="parfums__choix" role="group" aria-label="Choisir un parfum">
+            <button class="parfum" type="button" aria-pressed="true" data-parfum-btn="exotique" data-umami-event="Parfum de bûche" data-umami-event-parfum="exotique"><span class="parfum__pastille" style="--teinte:#f2b81c"></span>Exotique</button>
+            <button class="parfum" type="button" aria-pressed="false" data-parfum-btn="chocolat" data-umami-event="Parfum de bûche" data-umami-event-parfum="chocolat"><span class="parfum__pastille" style="--teinte:#8a4a32"></span>Chocolat</button>
+            <button class="parfum" type="button" aria-pressed="false" data-parfum-btn="vanille" data-umami-event="Parfum de bûche" data-umami-event-parfum="vanille"><span class="parfum__pastille" style="--teinte:#f6e7b4"></span>Vanille</button>
+          </div>
+        </div>
+        <div class="une__texte">
+          <p class="une__surtitre">À la une · Noël 2026</p>
           <h3 id="buches-titre">Les bûches de Noël</h3>
-          <p>Moulées dans nos propres moules à relief, finies au velours ou d'un nappage miroir.</p>
-          <p class="gout__parts gout__parts--seul">8 à 10 parts</p>
-          <p class="card__prix">50&nbsp;€ <span>la bûche</span></p>
+          <p class="lead">Moulées dans nos propres moules à relief, finies au velours ou d'un nappage miroir.</p>
+          <p class="card__prix">50&nbsp;€ <span>la bûche · 8 à 10 parts</span></p>
           <div class="card__commande-parfum" data-parfum-commande="exotique">
-            <a class="pill pill--cta card__commande" href="https://takeat.fr/bryan-didon/emporter?plat=a1e3f6e6-128f-41c9-b348-307a985ca5eb" data-suivi="Commander" data-suivi-depuis="bûches" data-suivi-parfum="exotique">Commander la bûche exotique
+            <a class="pill pill--cta card__commande" href="https://takeat.fr/bryan-didon/emporter?plat=a1e3f6e6-128f-41c9-b348-307a985ca5eb" data-suivi="Commander" data-suivi-depuis="accueil, à la une" data-suivi-parfum="exotique">Commander la bûche exotique
               <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
             </a>
           </div>
           <div class="card__commande-parfum" data-parfum-commande="chocolat" hidden>
-            <a class="pill pill--cta card__commande" href="https://takeat.fr/bryan-didon/emporter?plat=f9de2f43-b2e2-47dc-886b-6cee0001b72b" data-suivi="Commander" data-suivi-depuis="bûches" data-suivi-parfum="chocolat">Commander la bûche chocolat
+            <a class="pill pill--cta card__commande" href="https://takeat.fr/bryan-didon/emporter?plat=f9de2f43-b2e2-47dc-886b-6cee0001b72b" data-suivi="Commander" data-suivi-depuis="accueil, à la une" data-suivi-parfum="chocolat">Commander la bûche chocolat
               <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
             </a>
           </div>
           <div class="card__commande-parfum" data-parfum-commande="vanille" hidden>
-            <a class="pill pill--cta card__commande" href="https://takeat.fr/bryan-didon/emporter?plat=84724e96-a320-4502-a9fe-34a3eb0c1158" data-suivi="Commander" data-suivi-depuis="bûches" data-suivi-parfum="vanille">Commander la bûche vanille
+            <a class="pill pill--cta card__commande" href="https://takeat.fr/bryan-didon/emporter?plat=84724e96-a320-4502-a9fe-34a3eb0c1158" data-suivi="Commander" data-suivi-depuis="accueil, à la une" data-suivi-parfum="vanille">Commander la bûche vanille
               <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
             </a>
           </div>
-          <!-- parfums:debut -->
-          <div class="gout" data-parfum-detail="exotique">
-            <p class="gout__titre">De haut en bas</p>
-            <ol class="gout__couches" role="list">
-              <li><span class="gout__couche">Ganache montée</span> noix de coco et citron vert</li>
-              <li><span class="gout__couche">Coulis</span> mangue, fruit de la passion et citron vert</li>
-              <li><span class="gout__couche">Crémeux</span> mangue et passion</li>
-              <li><span class="gout__couche">Biscuit madeleine</span> citron vert</li>
-              <li><span class="gout__couche">Croustillant praliné</span> coco et amande</li>
-            </ol>
-            <p class="gout__titre">Allergènes</p>
-            <p class="gout__vide"><span class="a-completer">À compléter</span></p>
-          </div>
-          <div class="gout" data-parfum-detail="chocolat" hidden>
-            <p class="gout__titre">De haut en bas</p>
-            <ol class="gout__couches" role="list">
-              <li><span class="gout__couche">Ganache montée</span> chocolat noir et chocolat au lait</li>
-              <li><span class="gout__couche">Crémeux</span> chocolat noir et chocolat au lait</li>
-              <li><span class="gout__couche">Caramel beurre salé</span></li>
-              <li><span class="gout__couche">Biscuit madeleine</span> cacao</li>
-              <li><span class="gout__couche">Croustillant praliné</span> noisette</li>
-            </ol>
-            <p class="gout__titre">Allergènes</p>
-            <p class="gout__vide"><span class="a-completer">À compléter</span></p>
-          </div>
-          <div class="gout" data-parfum-detail="vanille" hidden>
-            <p class="gout__titre">De haut en bas</p>
-            <ol class="gout__couches" role="list">
-              <li><span class="gout__couche">Ganache montée</span> vanille de Madagascar</li>
-              <li><span class="gout__couche">Mousse</span> vanille torréfiée</li>
-              <li><span class="gout__couche">Caramel beurre salé</span> à la vanille</li>
-              <li><span class="gout__couche">Biscuit madeleine</span> vanille</li>
-              <li><span class="gout__couche">Croustillant praliné</span> vanille et amande</li>
-            </ol>
-            <p class="gout__titre">Allergènes</p>
-            <p class="gout__vide"><span class="a-completer">À compléter</span></p>
-          </div>
-          <!-- parfums:fin -->
-          <p><a class="lien-fiche" href="/buches?parfum=exotique" data-parfum-lien>Voir la composition</a></p>
-          <p class="card__note">Collection Noël 2026.</p>
-        </article>
+          <p><a class="lien-fiche" href="/buches?parfum=exotique" data-parfum-lien>Les couches et la composition</a></p>
+        </div>
+      </article>
 
-        <article class="card" id="praline" aria-labelledby="praline-titre">
-          <img class="card__media card__media--pot" src="images/pate-a-tartiner-praline-vanille.webp" width="588" height="703" loading="lazy"
-               alt="Pot de pâte à tartiner praliné vanille Bryan Didon, 200 g">
-          <h3 id="praline-titre">Le praliné</h3>
-          <p>Pâte à tartiner praliné vanille : amandes, sucre et gousses de vanille. Pour la cuillère, la tartine, ou rien du tout.</p>
-          <p class="card__prix">11&nbsp;€ <span>le pot de 200&nbsp;g</span></p>
-          <a class="pill pill--cta card__commande" href="https://takeat.fr/bryan-didon/emporter?plat=74bd453e-48f6-4b58-99b2-41d4fa9a115b" data-suivi="Commander" data-suivi-depuis="praliné">Commander le praliné
-            <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
-          </a>
-          <p><a class="lien-fiche" href="/praline">Voir la composition</a></p>
-        </article>
-
-        <article class="card" id="gianduja" aria-labelledby="gianduja-titre">
-          <img class="card__media card__media--pot card__media--fond-blanc" src="images/pate-a-tartiner-gianduja.webp" width="722" height="840" loading="lazy"
-               alt="Pot de pâte à tartiner gianduja Bryan Didon, 200 g">
-          <h3 id="gianduja-titre">Le gianduja</h3>
-          <p>Pâte à tartiner gianduja : amandes, noisettes et cacao. Pour la cuillère, la tartine, ou rien du tout.</p>
-          <p class="card__prix">9,50&nbsp;€ <span>le pot de 200&nbsp;g</span></p>
-          <!-- TODO : lien Takeat du produit (?plat=<id>) à fournir ; en attendant, toute la carte. -->
-          <a class="pill pill--cta card__commande" href="https://takeat.fr/bryan-didon/emporter" data-suivi="Commander" data-suivi-depuis="gianduja">Commander le gianduja
-            <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
-          </a>
-          <p><a class="lien-fiche" href="/gianduja">Voir la composition</a></p>
-        </article>
-
-        <article class="card" id="vanille" aria-labelledby="vanille-titre">
-          <img class="card__media card__media--pot card__media--fond-blanc" src="images/vanille-tube.webp" width="446" height="1000" loading="lazy"
-               alt="Tube en verre de gousses de vanille de Madagascar, étiquette Bryan Didon">
-          <h3 id="vanille-titre">La vanille de Madagascar</h3>
-          <p>Gousses de vanille Bourbon, charnues et parfumées : celles de nos pâtisseries, en tube de verre.</p>
-          <p class="card__prix"><span>à partir de</span> 5&nbsp;€ <span>les 2 gousses</span></p>
-          <!-- TODO : lien Takeat du produit (?plat=<id>) à fournir ; en attendant, toute la carte. -->
-          <a class="pill pill--cta card__commande" href="https://takeat.fr/bryan-didon/emporter" data-suivi="Commander" data-suivi-depuis="vanille">Commander la vanille
-            <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
-          </a>
-          <p><a class="lien-fiche" href="/vanille">Voir la fiche</a></p>
-        </article>
+      <div class="carte-apercu" aria-labelledby="apercu-titre">
+        <div class="carte-apercu__tete">
+          <h3 class="carte-apercu__titre" id="apercu-titre">Toute la carte</h3>
+          <a class="lien-fiche" href="/creations">Tout voir</a>
+        </div>
+        <ul class="rail" role="list">
+          <li class="rail__item">
+            <a class="rail__carte" href="/galette">
+              <img class="rail__img" src="images/galette-entiere.webp" width="1535" height="1024" alt="" loading="lazy">
+              <span class="rail__saison">Épiphanie</span>
+              <span class="rail__nom">La galette des rois</span>
+              <span class="rail__prix"><span>à partir de</span> 26&nbsp;€</span>
+            </a>
+          </li>
+          <li class="rail__item">
+            <a class="rail__carte" href="/praline">
+              <img class="rail__img" src="images/pate-a-tartiner-praline-vanille.webp" width="588" height="703" alt="" loading="lazy">
+              <span class="rail__saison">À tartiner</span>
+              <span class="rail__nom">Le praliné</span>
+              <span class="rail__prix">11&nbsp;€</span>
+            </a>
+          </li>
+          <li class="rail__item">
+            <a class="rail__carte" href="/gianduja">
+              <img class="rail__img rail__img--fond-blanc" src="images/pate-a-tartiner-gianduja.webp" width="722" height="840" alt="" loading="lazy">
+              <span class="rail__saison">À tartiner</span>
+              <span class="rail__nom">Le gianduja</span>
+              <span class="rail__prix">9,50&nbsp;€</span>
+            </a>
+          </li>
+          <li class="rail__item">
+            <a class="rail__carte" href="/vanille">
+              <img class="rail__img rail__img--fond-blanc" src="images/vanille-tube.webp" width="446" height="1000" alt="" loading="lazy">
+              <span class="rail__saison">Épicerie fine</span>
+              <span class="rail__nom">La vanille de Madagascar</span>
+              <span class="rail__prix"><span>à partir de</span> 5&nbsp;€</span>
+            </a>
+          </li>
+        </ul>
+        <p class="carte-apercu__action"><a class="pill pill--cta" href="/creations" data-umami-event="Voir toutes les créations" data-umami-event-depuis="accueil">Voir toutes les créations
+          <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
+        </a></p>
       </div>
     </section>
 
@@ -306,10 +247,14 @@
     <section class="order" id="commander" aria-labelledby="commander-titre">
       <svg class="lys lys--light" aria-hidden="true"><use href="#lys"/></svg>
       <h2 class="title title--light" id="commander-titre">Click &amp; Collect</h2>
-      <p>Choisissez vos pièces en ligne, puis retirez-les à l'heure convenue.</p>
+      <ol class="etapes" role="list">
+        <li><span class="etapes__num" aria-hidden="true">1</span><span><strong>Choisissez</strong> vos créations en ligne.</span></li>
+        <li><span class="etapes__num" aria-hidden="true">2</span><span><strong>Réservez</strong> l'heure de retrait.</span></li>
+        <li><span class="etapes__num" aria-hidden="true">3</span><span><strong>Retirez</strong> votre commande au laboratoire.</span></li>
+      </ol>
       <a class="pill pill--light" href="https://takeat.fr/bryan-didon/emporter" data-panier-ou-catalogue data-suivi="Commander" data-suivi-depuis="boutique">
         <svg class="pill__icon" aria-hidden="true"><use href="#sac"/></svg>
-        Ouvrir la boutique en ligne
+        Commander
       </a>
     </section>
 

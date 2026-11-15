@@ -94,8 +94,14 @@
       <h1 class="title" id="produit-titre">Nos créations</h1>
       <p class="vitrine__intro">Des pièces de saison, en petites séries. Commandez en ligne, retirez au laboratoire à l'heure choisie.</p>
     </header>
-    <div class="vitrine">
-        <article class="vitrine__carte" aria-labelledby="carte-galette">
+    <div class="filtres" role="group" aria-label="Afficher une catégorie" data-filtres>
+        <button class="filtre" type="button" aria-pressed="true" data-filtre="tout">Tout</button>
+        <button class="filtre" type="button" aria-pressed="false" data-filtre="fetes">Fêtes</button>
+        <button class="filtre" type="button" aria-pressed="false" data-filtre="tartiner">À tartiner</button>
+        <button class="filtre" type="button" aria-pressed="false" data-filtre="epicerie">Épicerie fine</button>
+    </div>
+    <div class="vitrine" id="vitrine">
+        <article class="vitrine__carte" aria-labelledby="carte-galette" data-categorie="fetes">
           <a class="vitrine__media" href="/galette" tabindex="-1" aria-hidden="true">
             <img src="images/galette-entiere.webp" width="1535" height="1024" alt="Galette des rois tressée, vue de trois quarts">
           </a>
@@ -108,7 +114,7 @@
           </a>
           <a class="lien-fiche" href="/galette">Voir la fiche</a>
         </article>
-        <article class="vitrine__carte" aria-labelledby="carte-exotique">
+        <article class="vitrine__carte" aria-labelledby="carte-exotique" data-categorie="fetes">
           <a class="vitrine__media" href="/buches?parfum=exotique" tabindex="-1" aria-hidden="true">
             <img src="images/buche-exotique.webp" width="1079" height="513" alt="Bûche exotique jaune, moulée en relief d'hibiscus et de feuillages">
           </a>
@@ -121,7 +127,7 @@
           </a>
           <a class="lien-fiche" href="/buches?parfum=exotique">Voir la fiche</a>
         </article>
-        <article class="vitrine__carte" aria-labelledby="carte-chocolat">
+        <article class="vitrine__carte" aria-labelledby="carte-chocolat" data-categorie="fetes">
           <a class="vitrine__media" href="/buches?parfum=chocolat" tabindex="-1" aria-hidden="true">
             <img src="images/buche-chocolat.webp" width="1103" height="526" alt="Bûche chocolat, moulée en relief d'hibiscus et de feuillages">
           </a>
@@ -134,7 +140,7 @@
           </a>
           <a class="lien-fiche" href="/buches?parfum=chocolat">Voir la fiche</a>
         </article>
-        <article class="vitrine__carte" aria-labelledby="carte-vanille">
+        <article class="vitrine__carte" aria-labelledby="carte-vanille" data-categorie="fetes">
           <a class="vitrine__media" href="/buches?parfum=vanille" tabindex="-1" aria-hidden="true">
             <img src="images/buche-vanille.webp" width="1047" height="523" alt="Bûche vanille ivoire, moulée en relief d'hibiscus et de feuillages" loading="lazy">
           </a>
@@ -147,7 +153,7 @@
           </a>
           <a class="lien-fiche" href="/buches?parfum=vanille">Voir la fiche</a>
         </article>
-        <article class="vitrine__carte" aria-labelledby="carte-praline">
+        <article class="vitrine__carte" aria-labelledby="carte-praline" data-categorie="tartiner">
           <a class="vitrine__media" href="/praline" tabindex="-1" aria-hidden="true">
             <img src="images/pate-a-tartiner-praline-vanille.webp" width="588" height="703" alt="Pot de pâte à tartiner praliné vanille Bryan Didon, 200 g" loading="lazy">
           </a>
@@ -160,7 +166,7 @@
           </a>
           <a class="lien-fiche" href="/praline">Voir la fiche</a>
         </article>
-        <article class="vitrine__carte" aria-labelledby="carte-gianduja">
+        <article class="vitrine__carte" aria-labelledby="carte-gianduja" data-categorie="tartiner">
           <a class="vitrine__media" href="/gianduja" tabindex="-1" aria-hidden="true">
             <img src="images/pate-a-tartiner-gianduja.webp" width="722" height="840" alt="Pot de pâte à tartiner gianduja Bryan Didon, 200 g" loading="lazy">
           </a>
@@ -173,15 +179,15 @@
           </a>
           <a class="lien-fiche" href="/gianduja">Voir la fiche</a>
         </article>
-        <article class="vitrine__carte" aria-labelledby="carte-vanille">
+        <article class="vitrine__carte" aria-labelledby="carte-vanille-madagascar" data-categorie="epicerie">
           <a class="vitrine__media" href="/vanille" tabindex="-1" aria-hidden="true">
             <img src="images/vanille-tube.webp" width="446" height="1000" alt="Tube en verre de gousses de vanille de Madagascar, étiquette Bryan Didon" loading="lazy">
           </a>
-          <p class="vitrine__saison">Épicerie</p>
-          <h2 class="vitrine__nom" id="carte-vanille"><a href="/vanille">Vanille de Madagascar</a></h2>
+          <p class="vitrine__saison">Épicerie fine</p>
+          <h2 class="vitrine__nom" id="carte-vanille-madagascar"><a href="/vanille">Vanille de Madagascar</a></h2>
           <p class="vitrine__desc">Gousses de vanille Bourbon, en tube de verre de 2, 5 ou 10 gousses.</p>
           <p class="vitrine__prix"><span>à partir de</span> 5&nbsp;€</p>
-          <a class="pill pill--cta card__commande" href="https://takeat.fr/bryan-didon/emporter" data-suivi="Commander" data-suivi-depuis="catalogue" data-suivi-produit="vanille">Commander
+          <a class="pill pill--cta card__commande" href="https://takeat.fr/bryan-didon/emporter" data-suivi="Commander" data-suivi-depuis="catalogue" data-suivi-produit="vanille-madagascar">Commander
             <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
           </a>
           <a class="lien-fiche" href="/vanille">Voir la fiche</a>

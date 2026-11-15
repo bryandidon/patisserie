@@ -143,21 +143,7 @@ if (carousel) {
   layout();
 }
 
-// Galette : basculer entre l'extérieur et la coupe
-const reveal = document.querySelector('[data-reveal]');
-const toggle = document.querySelector('[data-reveal-toggle]');
-if (reveal && toggle) {
-  const closed = toggle.querySelector('[data-label-closed]');
-  const open = toggle.querySelector('[data-label-open]');
-  toggle.addEventListener('click', () => {
-    const isOpen = reveal.classList.toggle('is-open');
-    toggle.setAttribute('aria-pressed', String(isOpen));
-    closed.hidden = isOpen;
-    open.hidden = !isOpen;
-  });
-}
-
-// Bûches : changer de parfum (accueil et page /buches)
+// Bûches : changer de parfum (accueil, création à la une, et page /buches)
 // La photo, le bouton Commander, la fiche et le lien « Voir la composition » suivent le parfum choisi.
 const parfums = document.querySelector('[data-parfums]');
 if (parfums) {
@@ -367,4 +353,103 @@ document.querySelectorAll('form[data-newsletter]').forEach(nlBrancher);
   };
   setTimeout(ouvrir, 20000);
   window.addEventListener('scroll', auDefilement, { passive: true });
+})();
+
+// Hauteur du menu du haut : les onglets du catalogue se calent juste dessous.
+if (nav && 'ResizeObserver' in window) {
+  new ResizeObserver(() => document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px')).observe(nav);
+}
+
+// Catalogue (/creations) : onglets par catégorie. /creations?categorie=tartiner ouvre directement un onglet.
+const filtres = document.querySelector('[data-filtres]');
+if (filtres) {
+  const boutons = filtres.querySelectorAll('[data-filtre]');
+  const cartes = document.querySelectorAll('.vitrine [data-categorie]');
+  const vitrine = document.getElementById('vitrine');
+  const filtrer = (cat, parClic) => {
+    boutons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filtre === cat)));
+    cartes.forEach((c) => { c.hidden = cat !== 'tout' && c.dataset.categorie !== cat; });
+    try { history.replaceState(null, '', cat === 'tout' ? location.pathname : '?categorie=' + cat); } catch (e) {}
+    if (!parClic) return;
+    try { if (window.umami) window.umami.track('Catalogue : catégorie', { categorie: cat }); } catch (e) {}
+    // Si on avait défilé plus bas, on remonte au début de la liste.
+    const haut = vitrine.getBoundingClientRect().top - filtres.getBoundingClientRect().bottom;
+    if (haut < 0) window.scrollTo({ top: window.scrollY + haut - 12, behavior: 'smooth' });
+  };
+  boutons.forEach((b) => b.addEventListener('click', () => filtrer(b.dataset.filtre, true)));
+  const demande = new URLSearchParams(location.search).get('categorie');
+  if (demande && filtres.querySelector('[data-filtre="' + demande + '"]')) filtrer(demande, false);
+}
+
+// Barre « Commander » en bas de l'écran (téléphone, tablette ; cachée sur ordinateur par styles.css).
+// Accueil et pages produits. Elle apparaît quand aucun bouton Commander n'est à l'écran,
+// et seulement panier vide : panier rempli, Takeat affiche son propre bouton « Panier ».
+(() => {
+  if (!('IntersectionObserver' in window)) return;
+  const fiche = document.querySelector('.produit__texte');
+  const accueil = document.querySelector('.hero');
+  if (!fiche && !accueil) return;
+  const chevron = '<svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>';
+  const barre = document.createElement('div');
+  barre.className = 'barre';
+  let nom = 'Click &amp; Collect';
+  let info = 'Retrait à l’heure choisie';
+  if (fiche) {
+    const titre = fiche.querySelector('.produit__titre');
+    const prix = fiche.querySelector('.card__prix');
+    const premier = fiche.querySelector('.prices dd');
+    nom = titre ? titre.innerHTML : nom;
+    info = prix ? prix.textContent.trim() : premier ? 'à partir de ' + premier.textContent.trim() : '';
+    barre.innerHTML = '<p class="barre__texte"><span class="barre__nom"></span><span class="barre__info"></span></p>'
+      + '<button class="pill pill--cta" type="button">Commander ' + chevron + '</button>';
+    // Le bouton reprend le bouton Commander de la fiche (pour les bûches : celui du parfum choisi).
+    barre.querySelector('button').addEventListener('click', () => {
+      const lien = [...fiche.querySelectorAll('.card__commande')].find((a) => !a.closest('[hidden]'));
+      if (lien) lien.click();
+    });
+  } else {
+    barre.innerHTML = '<p class="barre__texte"><span class="barre__nom"></span><span class="barre__info"></span></p>'
+      + '<a class="pill pill--cta" href="https://takeat.fr/bryan-didon/emporter" data-panier-ou-catalogue data-suivi="Commander" data-suivi-depuis="barre du bas">'
+      + '<svg class="pill__icon" aria-hidden="true"><use href="#sac"/></svg>Commander</a>';
+  }
+  barre.querySelector('.barre__nom').innerHTML = nom;
+  barre.querySelector('.barre__info').textContent = info;
+  if (!info) barre.querySelector('.barre__info').remove();
+  document.body.appendChild(barre);
+
+  // Ce qui, à l'écran, rend la barre inutile : un bouton Commander, le haut de l'accueil, le pied de page.
+  const cibles = document.querySelectorAll('.hero, .order, .une .card__commande, .produit__texte .card__commande, .footer');
+  const visibles = new Set();
+  let pret = false;
+  const maj = () => {
+    if (!pret) return;
+    const menuOuvert = menu && !menu.hidden;
+    barre.classList.toggle('is-visible', visibles.size === 0 && !menuOuvert && articlesAuPanier() === 0);
+  };
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => { if (en.isIntersecting) visibles.add(en.target); else visibles.delete(en.target); });
+    pret = true;
+    maj();
+  });
+  cibles.forEach((el) => io.observe(el));
+  setInterval(maj, 1000);
+  document.addEventListener('click', () => setTimeout(maj, 50));
+})();
+
+// Apparition douce des blocs au défilement. Seulement pour ce qui est sous le premier écran,
+// et pas si le téléphone demande moins d'animations.
+(() => {
+  if (!('IntersectionObserver' in window) || !window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+  const io = new IntersectionObserver((entries) => entries.forEach((en) => {
+    if (!en.isIntersecting) return;
+    en.target.classList.add('is-vu');
+    io.unobserve(en.target);
+  }), { rootMargin: '0px 0px -8% 0px' });
+  const enRang = '.etapes li, .vitrine__carte, .autres__carte, .fiche__bloc, .maison__vignettes > li';
+  document.querySelectorAll('.section__head, .une, .carte-apercu, .section--maison .prose, .contact__intro, ' + enRang).forEach((el) => {
+    if (el.getBoundingClientRect().top < window.innerHeight) return;
+    if (el.matches(enRang)) el.style.transitionDelay = ([...el.parentElement.children].indexOf(el) % 3) * 90 + 'ms';
+    el.classList.add('apparait');
+    io.observe(el);
+  });
 })();

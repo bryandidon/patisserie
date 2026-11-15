@@ -28,7 +28,9 @@ Site vitrine qui présente la marque et **redirige vers l'application de command
 - Catalogue `creations.html` (`/creations`) : toutes les créations en cartes ; c'est la cible du lien « Nos créations » du menu.
 - **Prix d'un produit à plusieurs tailles : toujours écrit « à partir de » le plus petit prix** dans les listes (ex. galette « à partir de 26 € »).
 - `galette.html`, `buches.html` (parfum choisi via `?parfum=exotique|chocolat|vanille`), `praline.html`, `vanille.html`, servies en `/galette`, `/buches`, `/praline`, `/vanille`.
-- Bûches : la description de chaque parfum (parts, couches de haut en bas, pictogrammes allergènes et garanties « sans porc »…) est **dans `index.html` et dans `buches.html`** : modifier les deux. Pictogrammes : symboles `#p-*` du sprite SVG.
+- Bûches : la description de chaque parfum (parts, couches de haut en bas, pictogrammes allergènes et garanties « sans porc »…) est **uniquement dans `buches.html`** (l'accueil n'en montre plus le détail). Pictogrammes : symboles `#p-*` du sprite SVG.
+- Accueil : une création « À la une » (bloc `<article class="une">`, actuellement les bûches ; à remplacer selon la saison, ex. la galette en janvier), puis « Toute la carte » en rangée de petites cartes vers les fiches. Le catalogue complet est sur `/creations` (onglets Fêtes / À tartiner / Épicerie fine, lien direct `/creations?categorie=tartiner`).
+- Téléphone : barre « Commander » en bas de l'écran (créée par `script.js`) sur l'accueil et les fiches, seulement panier vide (panier rempli : bouton « Panier » de Takeat).
 - Fiche : recette, ingrédients, allergènes, parts/poids, conservation. Les textes manquants sont marqués `<span class="a-completer">`.
 
 ## Newsletter (Brevo)

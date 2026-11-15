@@ -235,25 +235,7 @@ p { margin: 0 0 1em; }
 .section { padding: var(--section) var(--gap) 0; max-width: 1240px; margin: 0 auto; }
 .section__head { margin-bottom: clamp(2.5rem, 6vw, 4.5rem); }
 
-.feature { display: grid; gap: var(--gap); align-items: center; }
-@media (min-width: 900px) { .feature { grid-template-columns: 7fr 5fr; } }
-.feature__media { text-align: center; }
-.feature__text { max-width: 30rem; }
-.feature h3, .card h3 { font-size: var(--step-2); font-weight: 500; color: var(--nuit); line-height: 1.15; margin-bottom: .5em; }
 .lead { font-size: var(--step-1); line-height: 1.45; }
-
-.reveal { position: relative; margin: 0; aspect-ratio: 1535 / 1024; }
-.reveal__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: opacity .7s var(--ease), transform .9s var(--ease); }
-.reveal__img--inside { opacity: 0; transform: scale(.98); }
-.reveal.is-open .reveal__img--outside { opacity: 0; transform: scale(1.02); }
-.reveal.is-open .reveal__img--inside { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) { .reveal__img { transition: none; } }
-
-.link-btn {
-  min-height: 44px; padding: .4rem .2rem; margin-top: .25rem;
-  background: none; border: 0; border-bottom: 1px solid var(--or);
-  font: 500 var(--step-0)/1.2 var(--serif); color: var(--nuit); cursor: pointer;
-}
 
 .prices { display: grid; grid-template-columns: repeat(3, 1fr); margin: 1.75rem 0 2.25rem; border-top: 1px solid var(--trait); }
 .prices div { padding-top: .9rem; }
@@ -261,36 +243,70 @@ p { margin: 0 0 1em; }
 .prices dt { color: var(--encre-doux); }
 .prices dd { margin: 0; font-size: var(--step-2); line-height: 1.1; color: var(--nuit); }
 
-.duo { display: grid; gap: var(--gap); margin-top: var(--section); }
-@media (min-width: 760px) {
-  .duo { grid-template-columns: 1fr 1fr; }
-  .duo > #buches { grid-row: span 3; }
-  /* Petites cartes à droite de la bûche : photo à gauche, texte à droite */
-  .duo > .card:not(#buches) {
-    display: grid; grid-template-columns: 7.5rem 1fr; column-gap: 1.5rem; align-content: center;
-    text-align: left; padding: 1.75rem 1.75rem;
-  }
-  .duo > .card:not(#buches) > .card__media { grid-row: 1 / span 6; align-self: center; height: auto; max-height: 170px; width: 100%; object-fit: contain; margin: 0; }
-  .duo > .card:not(#buches) > * { grid-column: 2; }
-  .duo > .card:not(#buches) > .card__media { grid-column: 1; }
-  .duo > .card:not(#buches) h3 { margin-top: 0; }
-  .duo > .card:not(#buches) p { margin-left: 0; margin-right: 0; }
-  .duo > .card:not(#buches) .card__prix { margin-top: .5rem; }
-  .duo > .card:not(#buches) .card__commande { justify-self: start; margin: .25rem 0 .75rem; }
-}
-.card {
-  text-align: center; padding: clamp(2rem, 4vw, 3rem) clamp(1.25rem, 3vw, 2.5rem);
-  border: 1px solid var(--trait);
-  background: rgba(255, 255, 255, .35);
-}
-.card__media { height: 200px; width: auto; margin: 0 auto 1.5rem; }
-.card p { max-width: 30rem; margin-left: auto; margin-right: auto; }
-.card__note { color: var(--encre-doux); font-style: italic; margin-bottom: 0; }
-.card__media--pot { height: 230px; }
 .card__prix { margin-top: 1.25rem; font-size: var(--step-2); line-height: 1.1; color: var(--nuit); }
 .card__prix span { font-size: var(--step-0); color: var(--encre-doux); }
 .card__commande { margin: .25rem 0 1.25rem; font-size: 1.15rem; padding: .65rem 1.6rem; }
 .card__commande-parfum[hidden] { display: none; }
+
+/* Accueil : la création à la une */
+.une {
+  display: grid; gap: 1.5rem; align-items: center; text-align: center;
+  padding: clamp(1.75rem, 4vw, 3rem) clamp(.5rem, 3vw, 3rem);
+  border: 1px solid var(--trait); background: rgba(255, 255, 255, .35);
+}
+.une .parfums { margin-bottom: 0; }
+.une .parfums__choix { gap: .15rem; flex-wrap: nowrap; }
+.une__texte { padding: 0 .75rem; }
+@media (min-width: 900px) { .une__texte { padding: 0; } }
+.une__surtitre {
+  margin: 0 0 .6rem; font-family: var(--capitale); font-size: .75rem;
+  letter-spacing: .26em; text-transform: uppercase; color: var(--or);
+}
+.une h3 { font-size: var(--step-2); color: var(--nuit); line-height: 1.15; margin-bottom: .5em; }
+.une .lead { max-width: 28rem; margin-left: auto; margin-right: auto; }
+.une .card__prix { margin: 1.25rem 0 1.25rem; }
+.une .card__commande { margin: 0 0 1rem; }
+.une__texte > p:last-child { margin-bottom: 0; }
+@media (min-width: 900px) {
+  .une { grid-template-columns: 7fr 5fr; gap: clamp(2rem, 4vw, 4rem); text-align: left; }
+  .une .lead { margin-left: 0; }
+  .une .parfums__choix { justify-content: center; }
+}
+
+/* Accueil : le reste de la carte, en rangée qu'on fait glisser du doigt */
+.carte-apercu { margin-top: clamp(3rem, 7vw, 5rem); }
+.carte-apercu__tete { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 1.1rem; }
+.carte-apercu__titre { font-family: var(--capitale); font-size: .85rem; letter-spacing: .24em; text-transform: uppercase; color: var(--nuit); }
+.carte-apercu__tete .lien-fiche { margin: 0; }
+.rail {
+  list-style: none; margin: 0 calc(var(--gap) * -1); padding: .25rem var(--gap) 1rem;
+  display: grid; grid-auto-flow: column; grid-auto-columns: min(64%, 15rem); gap: .9rem;
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--gap);
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.rail::-webkit-scrollbar { display: none; }
+.rail__item { scroll-snap-align: start; display: flex; }
+.rail__carte {
+  flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center;
+  padding: 1.25rem 1rem 1.1rem; text-decoration: none;
+  border: 1px solid var(--trait); background: rgba(255, 255, 255, .35);
+  transition: background-color .25s var(--ease), border-color .25s var(--ease);
+}
+.rail__carte:hover { background: rgba(255, 255, 255, .7); border-color: var(--or); }
+.rail__img { width: 100%; height: 150px; object-fit: contain; margin-bottom: 1rem; transition: transform .6s var(--ease); }
+.rail__carte:hover .rail__img { transform: scale(1.04); }
+.rail__img--fond-blanc { mix-blend-mode: multiply; filter: brightness(1.04); }
+.rail__saison { font-family: var(--capitale); font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--or); }
+.rail__nom { margin: .35rem 0 .5rem; font-size: 1.4rem; line-height: 1.15; color: var(--nuit); }
+.rail__prix { margin-top: auto; font-size: 1.3rem; color: var(--nuit); }
+.rail__prix span { font-size: 1rem; font-style: italic; color: var(--encre-doux); }
+.carte-apercu__action { margin: 1.25rem 0 0; text-align: center; }
+@media (min-width: 760px) {
+  .rail { margin: 0; padding: 0; overflow: visible; grid-auto-flow: row; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  .carte-apercu__action { margin-top: 2rem; }
+}
+@media (prefers-reduced-motion: reduce) { .rail__img { transition: none; } }
+
 
 /* Bûches : ce qu'il y a dedans, selon le parfum choisi */
 .gout { max-width: 24rem; margin: 1.5rem auto .5rem; text-align: left; }
@@ -344,7 +360,6 @@ p { margin: 0 0 1em; }
   transition: color .25s var(--ease);
 }
 .lien-fiche:hover { color: var(--or); }
-.feature__text .lien-fiche { margin-top: 1rem; }
 
 /* Bûches : une photo par parfum, choisie avec les pastilles */
 .parfums { margin-bottom: 1.5rem; }
@@ -382,6 +397,23 @@ p { margin: 0 0 1em; }
 .order .title { margin-bottom: 1rem; }
 .order p { margin-bottom: 2.25rem; font-size: var(--step-1); }
 .order :focus-visible { outline-color: #fff; }
+.order .title { margin-bottom: 2rem; }
+.etapes {
+  list-style: none; margin: 0 auto 2.5rem; padding: 0; max-width: 58rem;
+  display: grid; gap: 1.25rem; text-align: left;
+}
+.etapes li { display: flex; align-items: center; gap: 1rem; font-size: var(--step-1); line-height: 1.35; }
+.etapes strong { font-weight: 600; color: #fff; }
+.etapes__num {
+  flex: none; display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%;
+  border: 1px solid var(--or-clair); color: var(--or-clair);
+  font-family: var(--capitale); font-size: 1rem;
+}
+@media (max-width: 759px) { .etapes { max-width: 20rem; } }
+@media (min-width: 760px) {
+  .etapes { grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center; }
+  .etapes li { flex-direction: column; gap: .9rem; }
+}
 
 /* ---------- Contact ---------- */
 .section--contact { text-align: center; padding-bottom: var(--section); }
@@ -459,7 +491,7 @@ p { margin: 0 0 1em; }
 /* Deux photos verticales côte à côte (vanille) */
 .produit__photos--duo { grid-template-columns: minmax(0, 446fr) minmax(0, 606fr); align-items: end; max-width: 30rem; margin: 0 auto; }
 /* Photo sur fond blanc : le blanc se fond dans le marbre */
-.produit__photo--fond-blanc, .card__media--fond-blanc, .vitrine__media img[src*="vanille-"], .autres__carte img[src*="vanille-"],
+.produit__photo--fond-blanc, .vitrine__media img[src*="vanille-"], .autres__carte img[src*="vanille-"],
 .vitrine__media img[src*="gianduja"], .autres__carte img[src*="gianduja"] { mix-blend-mode: multiply; filter: brightness(1.04); }
 .produit__texte { text-align: center; }
 .produit__texte .lys { margin-bottom: .9rem; }
@@ -595,16 +627,32 @@ p { margin: 0 0 1em; }
 .vitrine__entete .title { font-size: var(--step-3); }
 .vitrine__intro { max-width: 32rem; margin: 1.25rem auto 0; font-size: var(--step-1); line-height: 1.45; color: var(--encre-doux); }
 .vitrine {
-  display: grid; gap: 1.25rem; padding-bottom: var(--section);
-  grid-template-columns: 1fr;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem; padding-bottom: var(--section);
 }
-@media (min-width: 640px) { .vitrine { grid-template-columns: 1fr 1fr; } }
-@media (min-width: 640px) and (max-width: 999px) { .vitrine__carte:last-child:nth-child(2n+1) { grid-column: 1 / -1; justify-self: center; width: calc(50% - .75rem); } }
-@media (min-width: 1000px) {
-  .vitrine { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-  /* Dernière carte seule sur sa ligne : centrée */
-  .vitrine__carte:last-child:nth-child(3n+1) { grid-column: 2; }
+.vitrine__carte { flex: 0 1 100%; }
+.vitrine__carte[hidden] { display: none; }
+@media (min-width: 640px) { .vitrine__carte { flex-basis: calc(50% - .625rem); } }
+@media (min-width: 1000px) { .vitrine { gap: 1.5rem; } .vitrine__carte { flex-basis: calc((100% - 3rem) / 3); } }
+
+/* Catalogue : onglets par catégorie, qui restent sous le menu pendant le défilement */
+.filtres {
+  position: sticky; top: var(--nav-h, 4rem); z-index: 10;
+  display: flex; gap: .4rem; justify-content: safe center;
+  margin: 0 calc(var(--gap) * -1) 1.75rem; padding: .7rem var(--gap);
+  overflow-x: auto; scrollbar-width: none;
+  background: rgba(248, 244, 241, .93); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
 }
+.filtres::-webkit-scrollbar { display: none; }
+.filtre {
+  flex: none; min-height: 42px; padding: .35rem .8rem; border-radius: 999px;
+  border: 1px solid var(--trait); background: rgba(255, 255, 255, .5);
+  font: 500 1.02rem/1 var(--serif); color: var(--encre-doux); cursor: pointer; white-space: nowrap;
+  transition: background-color .2s var(--ease), color .2s var(--ease);
+}
+.filtre:hover { color: var(--nuit); border-color: var(--or); }
+.filtre[aria-pressed="true"] { background: var(--nuit); border-color: var(--nuit); color: #fff; }
+@media (min-width: 640px) { .filtres { gap: .6rem; } .filtre { padding: .35rem 1.1rem; font-size: 1.1rem; } }
+
 .vitrine__carte {
   display: flex; flex-direction: column; align-items: center; text-align: center;
   padding: 1.75rem 1.25rem 1.5rem;
@@ -664,3 +712,30 @@ html.verrou body > :not(.acces):not(svg) { display: none !important; }
 .acces__form--erreur .acces__champ { animation: secoue .4s var(--ease); }
 @keyframes secoue { 25% { transform: translateX(-6px); } 50% { transform: translateX(6px); } 75% { transform: translateX(-3px); } }
 @media (min-width: 48em) { .acces__carte { padding: 3rem 2.75rem 2.5rem; } }
+
+/* Barre « Commander » en bas de l'écran (téléphone et tablette) :
+   visible quand le bouton principal n'est plus à l'écran, et seulement panier vide
+   (panier rempli : Takeat affiche son propre bouton « Panier »). */
+.barre {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 15;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: .6rem var(--gap) calc(.6rem + env(safe-area-inset-bottom));
+  background: rgba(248, 244, 241, .96); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  box-shadow: 0 -1px 0 rgba(176, 134, 66, .35), 0 -10px 30px -18px rgba(16, 35, 75, .35);
+  transform: translateY(110%); visibility: hidden;
+  transition: transform .35s var(--ease), visibility 0s .35s;
+}
+.barre.is-visible { transform: none; visibility: visible; transition: transform .35s var(--ease), visibility 0s; }
+.barre__texte { min-width: 0; line-height: 1.2; }
+.barre__nom { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 1.15rem; color: var(--nuit); }
+.barre__info { display: block; font-size: .95rem; font-style: italic; color: var(--encre-doux); }
+.barre .pill { flex: none; min-height: 46px; padding: .5rem 1.3rem; font-size: 1.1rem; gap: .5rem; }
+.barre .pill__icon { width: 20px; height: 20px; }
+@media (min-width: 1000px) { .barre { display: none; } }
+@media (prefers-reduced-motion: reduce) { .barre, .barre.is-visible { transition: none; } }
+
+/* Apparition douce au défilement (ajoutée par script.js, seulement sous le premier écran) */
+@media (prefers-reduced-motion: no-preference) {
+  .apparait { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+  .apparait.is-vu { opacity: 1; transform: none; }
+}
