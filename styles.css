@@ -374,6 +374,7 @@ p { margin: 0 0 1em; }
 /* ---------- Contact ---------- */
 .section--contact { text-align: center; padding-bottom: var(--section); }
 .contact__intro { font-size: var(--step-1); }
+.contact__action { margin: 2rem 0 0; }
 .social { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 2.5rem; padding: 0; margin: 1.5rem 0 0; }
 .social a { display: inline-block; padding: .5rem 0; font-size: var(--step-1); color: var(--nuit); text-decoration: none; border-bottom: 1px solid var(--or); }
 
@@ -482,6 +483,38 @@ p { margin: 0 0 1em; }
 .maison__vignettes a:hover { background: rgba(255, 255, 255, .7); border-color: var(--or); }
 .maison__vignettes img { height: 90px; width: auto; max-width: 100%; object-fit: contain; }
 .maison__vignettes img[src*="vanille-"] { mix-blend-mode: multiply; filter: brightness(1.04); }
+
+/* ---------- Contact (/contact) ---------- */
+.contact { max-width: 40rem; margin: clamp(2rem, 5vw, 3.5rem) auto 0; padding: clamp(1.5rem, 4vw, 2.75rem); border: 1px solid var(--trait); background: rgba(255, 255, 255, .45); }
+.formulaire { display: grid; gap: 1.25rem; }
+.formulaire__ligne { display: grid; gap: 1.25rem; align-items: end; }
+@media (min-width: 640px) { .formulaire__ligne { grid-template-columns: 1fr 1fr; } }
+.champ { display: grid; gap: .4rem; }
+.champ label { font-family: var(--capitale); font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: var(--or); }
+.champ label span { text-transform: none; letter-spacing: 0; font-family: var(--serif); font-style: italic; font-size: .95rem; color: var(--encre-doux); }
+.champ input, .champ select, .champ textarea {
+  width: 100%; min-height: 48px; padding: .7rem .9rem;
+  font: inherit; font-size: 1.1rem; color: var(--nuit);
+  border: 1px solid var(--trait); border-radius: 0; background: rgba(255, 255, 255, .8);
+  -webkit-appearance: none; appearance: none;
+  transition: border-color .2s var(--ease), background-color .2s var(--ease);
+}
+.champ select { background-image: linear-gradient(45deg, transparent 50%, var(--or) 50%), linear-gradient(135deg, var(--or) 50%, transparent 50%); background-position: calc(100% - 1.2rem) 50%, calc(100% - .85rem) 50%; background-size: .35rem .35rem; background-repeat: no-repeat; padding-right: 2.5rem; }
+.champ textarea { resize: vertical; min-height: 9rem; }
+.champ input:focus, .champ select:focus, .champ textarea:focus { outline: none; border-color: var(--nuit); background: #fff; }
+.champ [aria-invalid="true"] { border-color: #a3402f; }
+.formulaire__piege { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.formulaire__erreur { margin: 0; color: #a3402f; text-align: center; font-style: italic; }
+.formulaire__erreur:empty { display: none; }
+.formulaire .maison__action { margin-top: .25rem; }
+.formulaire button[disabled] { opacity: .6; cursor: wait; }
+.formulaire__mention { margin: 0; text-align: center; font-size: .95rem; font-style: italic; color: var(--encre-doux); }
+.formulaire__merci { text-align: center; font-size: var(--step-1); color: var(--nuit); padding: 1rem 0; }
+.formulaire__merci:focus { outline: none; }
+.formulaire__merci .lys { margin-bottom: 1rem; }
+.contact__autres { text-align: center; }
+.contact__mail { margin: 0; font-size: var(--step-1); }
+.contact__mail a { color: var(--nuit); text-decoration: none; border-bottom: 1px solid var(--or); }
 
 /* Les autres créations */
 .autres { margin-top: var(--section); padding-bottom: var(--section); }

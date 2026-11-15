@@ -23,6 +23,7 @@ Site vitrine qui présente la marque et **redirige vers l'application de command
 
 ## Pages produits
 - Page `maison.html` (`/maison`) : texte de Bryan sur la maison, mot pour mot ; cible du lien « La Maison » du menu (l'accueil n'en garde qu'un aperçu).
+- Page `contact.html` (`/contact`) : le formulaire envoie à la fonction Vercel `api/contact.js`, qui expédie le message à `contact@bryandidon.fr` par le serveur mail OVH (`ssl0.ovh.net`, port 465, via `nodemailer`). Le mot de passe de la boîte est **uniquement** dans la variable d'environnement Vercel `SMTP_MOT_DE_PASSE` : ne jamais l'écrire dans le code ni le demander.
 - Catalogue `creations.html` (`/creations`) : toutes les créations en cartes ; c'est la cible du lien « Nos créations » du menu.
 - **Prix d'un produit à plusieurs tailles : toujours écrit « à partir de » le plus petit prix** dans les listes (ex. galette « à partir de 26 € »).
 - `galette.html`, `buches.html` (parfum choisi via `?parfum=exotique|chocolat|vanille`), `praline.html`, `vanille.html`, servies en `/galette`, `/buches`, `/praline`, `/vanille`.

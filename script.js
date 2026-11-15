@@ -214,3 +214,48 @@ document.addEventListener('click', (e) => {
 // Année du pied de page
 const year = document.querySelector('[data-year]');
 if (year) year.textContent = new Date().getFullYear();
+
+// Formulaire de contact (/contact)
+// Envoi par la fonction Vercel /api/contact (serveur mail OVH), sans quitter la page.
+// En cas d'échec : on propose d'écrire directement à l'adresse de contact.
+const formulaire = document.querySelector('[data-contact]');
+if (formulaire) {
+  const erreur = formulaire.querySelector('.formulaire__erreur');
+  const bouton = formulaire.querySelector('button[type="submit"]');
+  const merci = document.querySelector('.formulaire__merci');
+  const email = formulaire.dataset.email;
+  formulaire.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    erreur.textContent = '';
+    let premier = null;
+    formulaire.querySelectorAll('[required]').forEach((champ) => {
+      const ok = champ.checkValidity();
+      champ.setAttribute('aria-invalid', ok ? 'false' : 'true');
+      if (!ok && !premier) premier = champ;
+    });
+    if (premier) {
+      erreur.textContent = premier.type === 'email' && premier.value ? 'Cette adresse email ne semble pas valide.' : 'Merci de remplir les champs nom, email et message.';
+      premier.focus();
+      return;
+    }
+    const d = Object.fromEntries(new FormData(formulaire));
+    if (d.botcheck) return;
+    bouton.disabled = true;
+    try {
+      const rep = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(d),
+      });
+      const res = await rep.json().catch(() => ({}));
+      if (!rep.ok || !res.ok) throw new Error(res.erreur || 'envoi');
+      try { if (window.umami) window.umami.track('Message envoyé', { sujet: d.sujet }); } catch (err) {}
+      formulaire.hidden = true;
+      merci.hidden = false;
+      merci.focus();
+    } catch (err) {
+      erreur.innerHTML = 'L’envoi n’a pas fonctionné. Écrivez-nous directement à <a href="mailto:' + email + '">' + email + '</a>.';
+      bouton.disabled = false;
+    }
+  });
+}

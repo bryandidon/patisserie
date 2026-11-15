@@ -1,0 +1,8 @@
+{
+  "name": "bryan-didon-patisserie",
+  "private": true,
+  "description": "Site vitrine statique ; seule la fonction api/contact.js utilise nodemailer.",
+  "dependencies": {
+    "nodemailer": "6.9.16"
+  }
+}
