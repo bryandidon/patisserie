@@ -160,6 +160,16 @@
   </main>
 
   <footer class="footer">
+    <form class="footer__newsletter" data-newsletter="pied de page" novalidate>
+      <p class="footer__newsletter-titre" id="nl-pied-titre">Recevoir les nouvelles créations en avant-première</p>
+      <input type="checkbox" name="botcheck" class="formulaire__piege" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="footer__newsletter-champ">
+        <label class="sr" for="nl-pied-email">Votre email</label>
+        <input id="nl-pied-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Votre email" required aria-describedby="nl-pied-titre">
+        <button class="pill pill--cta" type="submit">Je m’inscris</button>
+      </div>
+      <p class="newsletter__retour" role="status" aria-live="polite"></p>
+    </form>
     <div class="footer__bar">
       <img src="images/monogramme-bd.png" alt="" width="40" height="37" loading="lazy">
       <p>© <span data-year>2026</span> Bryan Didon – Haute Pâtisserie, Guadeloupe</p>

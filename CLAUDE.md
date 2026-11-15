@@ -30,6 +30,12 @@ Site vitrine qui présente la marque et **redirige vers l'application de command
 - Bûches : la description de chaque parfum (parts, couches de haut en bas, pictogrammes allergènes et garanties « sans porc »…) est **dans `index.html` et dans `buches.html`** : modifier les deux. Pictogrammes : symboles `#p-*` du sprite SVG.
 - Fiche : recette, ingrédients, allergènes, parts/poids, conservation. Les textes manquants sont marqués `<span class="a-completer">`.
 
+## Newsletter (Brevo)
+- Inscription par le pied de page de toutes les pages et par une pop-up (`script.js`) : après 20 s ou à la moitié de la page, jamais sur `/contact` ni `/merci-newsletter`, ni par-dessus l'écran d'accès, le menu ou le panier Takeat. Fermée : revient au bout de 30 jours ; inscrit : jamais (`localStorage` `bd-newsletter`).
+- Fonction Vercel `api/newsletter.js` → API Brevo, double opt-in : liste n° 3 « Newsletter site », modèle d'email de confirmation `MODELE_CONFIRMATION`, puis retour sur `/merci-newsletter`.
+- La clé API Brevo est **uniquement** dans la variable d'environnement Vercel `BREVO_CLE_API`.
+- Domaine `bryandidon.fr` authentifié chez Brevo (code Brevo, DKIM `brevo1/2._domainkey`, DMARC) dans la zone DNS OVH : ne pas supprimer ces lignes.
+
 ## Statistiques
 - Umami Cloud (sans cookies), script dans le `<head>` de `index.html` et `liens.html`, limité aux domaines `bryandidon.fr` / `www.bryandidon.fr`. Clics suivis via les attributs `data-umami-event`.
 

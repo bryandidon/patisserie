@@ -259,3 +259,112 @@ if (formulaire) {
     }
   });
 }
+
+// Newsletter : inscription (pied de page et pop-up) par la fonction Vercel /api/newsletter (Brevo).
+// Brevo envoie ensuite un email « Confirmez votre inscription » (double opt-in).
+const NL_CLE = 'bd-newsletter';
+const nlLire = () => { try { return JSON.parse(localStorage.getItem(NL_CLE) || 'null'); } catch (e) { return null; } };
+const nlNoter = (etat) => { try { localStorage.setItem(NL_CLE, JSON.stringify({ etat, t: Date.now() })); } catch (e) {} };
+
+const nlBrancher = (form) => {
+  const retour = form.querySelector('.newsletter__retour');
+  const champ = form.querySelector('input[type="email"]');
+  const bouton = form.querySelector('button[type="submit"]');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    retour.classList.remove('newsletter__retour--erreur');
+    if (!champ.checkValidity()) {
+      retour.textContent = champ.value ? 'Cette adresse email ne semble pas valide.' : 'Merci d’indiquer votre email.';
+      retour.classList.add('newsletter__retour--erreur');
+      champ.setAttribute('aria-invalid', 'true');
+      champ.focus();
+      return;
+    }
+    champ.removeAttribute('aria-invalid');
+    const d = Object.fromEntries(new FormData(form));
+    if (d.botcheck) return;
+    bouton.disabled = true;
+    try {
+      const rep = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ email: d.email }),
+      });
+      const res = await rep.json().catch(() => ({}));
+      if (!rep.ok || !res.ok) throw new Error(res.erreur || 'envoi');
+      nlNoter('inscrit');
+      try { if (window.umami) window.umami.track('Newsletter : inscription', { depuis: form.dataset.newsletter }); } catch (err) {}
+      form.classList.add('is-envoye');
+      retour.textContent = 'Merci ! Un email de confirmation vient de vous être envoyé : cliquez sur le lien qu’il contient pour valider votre inscription.';
+    } catch (err) {
+      retour.textContent = 'L’inscription n’a pas fonctionné. Merci de réessayer dans un instant.';
+      retour.classList.add('newsletter__retour--erreur');
+      bouton.disabled = false;
+    }
+  });
+};
+document.querySelectorAll('form[data-newsletter]').forEach(nlBrancher);
+
+// Pop-up : après 20 secondes ou à la moitié de la page, une seule fois.
+// Fermée : ne revient pas avant 30 jours. Inscrit : ne revient jamais.
+(() => {
+  const chemin = location.pathname.replace(/\.html$/, '');
+  if (chemin === '/contact' || chemin === '/merci-newsletter') return;
+  if (typeof HTMLDialogElement !== 'function') return;
+  const deja = nlLire();
+  if (deja && (deja.etat === 'inscrit' || Date.now() - deja.t < 30 * 24 * 60 * 60 * 1000)) return;
+
+  const dialog = document.createElement('dialog');
+  dialog.className = 'nl-pop';
+  dialog.setAttribute('aria-labelledby', 'nl-pop-titre');
+  dialog.innerHTML =
+    '<div class="nl-pop__carte">' +
+      '<button class="nl-pop__fermer" type="button" aria-label="Fermer">×</button>' +
+      '<svg class="lys" aria-hidden="true"><use href="#lys"/></svg>' +
+      '<p class="nl-pop__surtitre">Newsletter</p>' +
+      '<h2 class="nl-pop__titre" id="nl-pop-titre" tabindex="-1" autofocus>Les nouvelles créations, en avant-première</h2>' +
+      '<p class="nl-pop__texte">Galettes, bûches, collections de saison : soyez prévenu avant tout le monde.</p>' +
+      '<form class="nl-pop__form" data-newsletter="pop-up" novalidate>' +
+        '<input type="checkbox" name="botcheck" class="formulaire__piege" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+        '<label class="sr" for="nl-pop-email">Votre email</label>' +
+        '<input id="nl-pop-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Votre email" required>' +
+        '<button class="pill pill--cta" type="submit">Je m’inscris</button>' +
+        '<p class="newsletter__retour" role="status" aria-live="polite"></p>' +
+      '</form>' +
+      '<p class="nl-pop__mention">Un email par nouvelle collection. Désinscription en un clic.</p>' +
+    '</div>';
+  document.body.appendChild(dialog);
+  nlBrancher(dialog.querySelector('form'));
+
+  const fermer = () => { if (dialog.open) dialog.close(); };
+  dialog.querySelector('.nl-pop__fermer').addEventListener('click', fermer);
+  dialog.addEventListener('click', (e) => { if (e.target === dialog) fermer(); });
+  dialog.addEventListener('close', () => {
+    const etat = nlLire();
+    if (!etat || etat.etat !== 'inscrit') nlNoter('ferme');
+    try { if (window.umami) window.umami.track('Newsletter : pop-up fermée'); } catch (err) {}
+  });
+
+  let fait = false;
+  const ouvrir = () => {
+    if (fait) return;
+    // Pas par-dessus l'écran d'accès, le menu mobile ou le panier Takeat : on réessaie plus tard.
+    const occupe = document.documentElement.classList.contains('verrou') ||
+      document.querySelector('[data-menu]:not([hidden])') ||
+      [...document.querySelectorAll('iframe[src*="takeat.fr"]')].some((f) => {
+        const r = f.getBoundingClientRect();
+        return r.width > 0 && r.height > 0 && r.left < innerWidth && r.right > 0 && getComputedStyle(f).visibility !== 'hidden';
+      });
+    if (occupe) { setTimeout(ouvrir, 5000); return; }
+    fait = true;
+    window.removeEventListener('scroll', auDefilement);
+    dialog.showModal();
+    try { if (window.umami) window.umami.track('Newsletter : pop-up affichée'); } catch (err) {}
+  };
+  const auDefilement = () => {
+    const h = document.documentElement.scrollHeight - innerHeight;
+    if (h > 0 && scrollY / h >= 0.5) ouvrir();
+  };
+  setTimeout(ouvrir, 20000);
+  window.addEventListener('scroll', auDefilement, { passive: true });
+})();
