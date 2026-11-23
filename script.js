@@ -162,6 +162,26 @@ if (parfums) {
   if (demande && parfums.querySelector('[data-parfum-btn="' + demande + '"]')) choisir(demande);
 }
 
+// Bûches (/buches) : galerie découpe / profil / dessus. On fait glisser la photo du doigt,
+// ou on choisit une vue avec les vignettes.
+document.querySelectorAll('[data-galerie]').forEach((galerie) => {
+  const piste = galerie.querySelector('.galerie__piste');
+  const vignettes = galerie.querySelectorAll('[data-vue]');
+  const marquer = (i) => vignettes.forEach((b, j) => b.setAttribute('aria-pressed', String(i === j)));
+  vignettes.forEach((b) => b.addEventListener('click', () => {
+    const i = Number(b.dataset.vue);
+    const doux = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+    piste.scrollTo({ left: i * piste.clientWidth, behavior: doux ? 'smooth' : 'auto' });
+    marquer(i);
+    try { if (window.umami) window.umami.track('Bûche : vue', { vue: b.textContent.trim(), parfum: galerie.dataset.parfumDetail }); } catch (e) {}
+  }));
+  let attente;
+  piste.addEventListener('scroll', () => {
+    clearTimeout(attente);
+    attente = setTimeout(() => marquer(Math.round(piste.scrollLeft / piste.clientWidth)), 80);
+  }, { passive: true });
+});
+
 // Bouton « Commander Click & Collect » : panier vide -> la liste des créations ;
 // panier rempli -> on laisse Takeat ouvrir le panier sur le côté.
 // Le nombre d'articles est celui que le script Takeat garde dans le navigateur.
