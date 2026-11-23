@@ -36,7 +36,7 @@
     ecran.setAttribute('aria-labelledby', 'acces-titre');
     ecran.innerHTML =
       '<div class="acces__carte">' +
-        '<img class="acces__logo" src="images/logo-bryan-didon.png" alt="Bryan Didon, Haute Pâtisserie" width="1358" height="786">' +
+        '<img class="acces__logo" src="images/logo-bryan-didon.webp" alt="Bryan Didon, Haute Pâtisserie" width="640" height="370">' +
         '<svg class="lys" aria-hidden="true"><use href="#lys"/></svg>' +
         '<h1 class="acces__titre" id="acces-titre">Site en cours de finition</h1>' +
         '<p class="acces__texte">Saisissez le code d\'accès pour découvrir l\'avant-première.</p>' +
