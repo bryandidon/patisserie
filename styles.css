@@ -303,10 +303,11 @@ p { margin: 0 0 1em; }
 
 @media (prefers-reduced-motion: reduce) { .saveur__media img { transition: none; } }
 
-/* Accueil : le relief en gros plan, sur toute la largeur de l'écran */
+/* Accueil : bannière de trois photos carrées, sur toute la largeur de l'écran */
 main { overflow-x: clip; }
 .detail { width: 100vw; margin: clamp(3.5rem, 8vw, 6rem) 0 0 calc(50% - 50vw); }
-.detail img { width: 100%; height: clamp(14rem, 38vw, 30rem); object-fit: cover; object-position: 50% 72%; }
+.detail { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.detail img { width: 100%; aspect-ratio: 1; object-fit: cover; }
 
 /* Accueil : le reste de la carte, en rangée qu'on fait glisser du doigt */
 .carte-apercu { margin-top: clamp(3rem, 7vw, 5rem); }
