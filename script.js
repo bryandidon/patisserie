@@ -438,7 +438,7 @@ if (filtres) {
   document.body.appendChild(barre);
 
   // Ce qui, à l'écran, rend la barre inutile : un bouton Commander, le haut de l'accueil, le pied de page.
-  const cibles = document.querySelectorAll('.hero, .order, .une .card__commande, .produit__texte .card__commande, .footer');
+  const cibles = document.querySelectorAll('.hero, .order, .saveur .card__commande, .produit__texte .card__commande, .footer');
   const visibles = new Set();
   let pret = false;
   const maj = () => {
@@ -465,8 +465,8 @@ if (filtres) {
     en.target.classList.add('is-vu');
     io.unobserve(en.target);
   }), { rootMargin: '0px 0px -8% 0px' });
-  const enRang = '.etapes li, .vitrine__carte, .autres__carte, .fiche__bloc, .maison__vignettes > li';
-  document.querySelectorAll('.section__head, .une, .carte-apercu, .section--maison .prose, .contact__intro, ' + enRang).forEach((el) => {
+  const enRang = '.saveur, .etapes li, .vitrine__carte, .autres__carte, .fiche__bloc, .maison__vignettes > li';
+  document.querySelectorAll('.section__head, .saveurs__tete, .detail, .carte-apercu, .section--maison .prose, .contact__intro, ' + enRang).forEach((el) => {
     if (el.getBoundingClientRect().top < window.innerHeight) return;
     if (el.matches(enRang)) el.style.transitionDelay = ([...el.parentElement.children].indexOf(el) % 3) * 90 + 'ms';
     el.classList.add('apparait');

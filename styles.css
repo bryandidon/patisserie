@@ -250,29 +250,50 @@ p { margin: 0 0 1em; }
 .card__commande { margin: .25rem 0 1.25rem; font-size: 1.15rem; padding: .65rem 1.6rem; }
 .card__commande-parfum[hidden] { display: none; }
 
-/* Accueil : la création à la une */
-.une {
-  display: grid; gap: 1.5rem; align-items: center; text-align: center;
-  padding: clamp(1.75rem, 4vw, 3rem) clamp(.5rem, 3vw, 3rem);
-  border: 1px solid var(--trait); background: rgba(255, 255, 255, .35);
-}
-.une .parfums { margin-bottom: 0; }
-.une .parfums__choix { gap: .15rem; flex-wrap: nowrap; }
-.une__texte { padding: 0 .75rem; }
-@media (min-width: 900px) { .une__texte { padding: 0; } }
-.une__surtitre {
+/* Accueil : les bûches, un parfum par carte.
+   Téléphone : cartes qu'on fait glisser du doigt ; ordinateur : les trois côte à côte. */
+.saveurs { text-align: center; }
+.saveurs__tete { max-width: 34rem; margin: 0 auto clamp(1.75rem, 4vw, 2.75rem); }
+.saveurs__surtitre {
   margin: 0 0 .6rem; font-family: var(--capitale); font-size: .75rem;
   letter-spacing: .26em; text-transform: uppercase; color: var(--or);
 }
-.une h3 { font-size: var(--step-2); color: var(--nuit); line-height: 1.15; margin-bottom: .5em; }
-.une .lead { max-width: 28rem; margin-left: auto; margin-right: auto; }
-.une .card__prix { margin: 1.25rem 0 1.25rem; }
-.une .card__commande { margin: 0 0 1rem; }
-.une__texte > p:last-child { margin-bottom: 0; }
-@media (min-width: 900px) {
-  .une { grid-template-columns: 7fr 5fr; gap: clamp(2rem, 4vw, 4rem); text-align: left; }
-  .une .lead { margin-left: 0; }
-  .une .parfums__choix { justify-content: center; }
+.saveurs h3 { font-size: var(--step-2); color: var(--nuit); line-height: 1.15; margin-bottom: .5em; }
+.saveurs__prix { margin: 0; font-size: var(--step-1); color: var(--nuit); }
+.saveurs__prix span { font-size: var(--step-0); font-style: italic; color: var(--encre-doux); }
+.saveurs__liste {
+  list-style: none; margin: 0 calc(var(--gap) * -1); padding: 0 var(--gap) .5rem;
+  display: grid; grid-auto-flow: column; grid-auto-columns: min(80%, 20rem); gap: 1rem;
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--gap);
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.saveurs__liste::-webkit-scrollbar { display: none; }
+.saveur {
+  scroll-snap-align: start; display: flex; flex-direction: column; align-items: center;
+  padding: .5rem .5rem 1.4rem; border: 1px solid var(--trait); background: rgba(255, 255, 255, .35);
+}
+.saveur__media { display: block; width: 100%; margin-bottom: .6rem; }
+.saveur__media img { width: 100%; aspect-ratio: 10 / 9; object-fit: contain; padding: 5% 7% 0; transition: transform .9s var(--ease); }
+.saveur:hover .saveur__media img { transform: scale(1.04); }
+.saveur__nom { display: flex; align-items: center; gap: .55rem; margin: 0; font-size: 1.65rem; line-height: 1.15; color: var(--nuit); }
+.saveur__gout { margin: .45rem .75rem 1.1rem; font-style: italic; line-height: 1.4; color: var(--encre-doux); }
+.saveur .card__commande { margin: auto 0 .9rem; }
+.saveur .lien-fiche { margin: 0; }
+@media (min-width: 760px) {
+  .saveurs__liste {
+    margin: 0; padding: 0; overflow: visible;
+    grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 1.75rem);
+  }
+}
+@media (prefers-reduced-motion: reduce) { .saveur__media img { transition: none; } }
+
+/* Accueil : le relief en gros plan, sur toute la largeur de l'écran */
+main { overflow-x: clip; }
+.detail { width: 100vw; margin: clamp(3.5rem, 8vw, 6rem) 0 0 calc(50% - 50vw); }
+.detail img { width: 100%; height: clamp(14rem, 38vw, 30rem); object-fit: cover; object-position: 50% 72%; }
+.detail figcaption {
+  padding: 1.1rem var(--gap) 0; text-align: center;
+  font-size: var(--step-1); font-style: italic; color: var(--nuit);
 }
 
 /* Accueil : le reste de la carte, en rangée qu'on fait glisser du doigt */
@@ -511,7 +532,7 @@ img[src$="-coupe.webp"], img[src$="-profil.webp"], img[src$="-dessus.webp"] { mi
 .retour:hover { color: var(--nuit); }
 
 .produit__entete { display: grid; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; margin-top: 1rem; }
-.produit__media { text-align: center; }
+.produit__media { text-align: center; min-width: 0; }
 .produit__photo { width: 100%; max-width: 34rem; margin: 0 auto; }
 .produit__photo--pot { max-width: 17rem; }
 .produit__photos { display: grid; gap: clamp(.5rem, 2vw, 1.25rem); }
@@ -772,3 +793,8 @@ html.verrou body > :not(.acces):not(svg) { display: none !important; }
   .apparait { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
   .apparait.is-vu { opacity: 1; transform: none; }
 }
+
+/* Page bûches : la photo d'ambiance de l'intérieur remplit le cadre de la galerie */
+.galerie__vue--photo { padding: 0; min-width: 0; overflow: hidden; }
+.galerie__vue--photo img { width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; }
+.galerie__vignette img[src$="-interieur.webp"] { object-fit: cover; }
