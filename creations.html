@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Nos créations · Bryan Didon – Haute Pâtisserie</title>
-  <meta name="description" content="Toutes les créations Bryan Didon : galette des rois, bûches de Noël, praliné, gianduja, vanille de Madagascar. Commande en click & collect, Guadeloupe.">
+  <meta name="description" content="Toutes les créations Bryan Didon : bûches de Noël, praliné, gianduja, vanille de Madagascar. Commande en click & collect, Guadeloupe.">
   <meta property="og:title" content="Nos créations · Bryan Didon – Haute Pâtisserie">
-  <meta property="og:description" content="Toutes les créations Bryan Didon : galette des rois, bûches de Noël, praliné, gianduja, vanille de Madagascar. Commande en click & collect, Guadeloupe.">
+  <meta property="og:description" content="Toutes les créations Bryan Didon : bûches de Noël, praliné, gianduja, vanille de Madagascar. Commande en click & collect, Guadeloupe.">
   <meta property="og:image" content="https://www.bryandidon.fr/images/og-bryan-didon.jpg">
   <meta property="og:url" content="https://www.bryandidon.fr/creations">
   <meta property="og:type" content="website">
@@ -97,11 +97,14 @@
     <div class="filtres" role="group" aria-label="Afficher une catégorie" data-filtres>
         <button class="filtre" type="button" aria-pressed="true" data-filtre="tout">Tout</button>
         <button class="filtre" type="button" aria-pressed="false" data-filtre="buches">Bûches</button>
+        <!-- HORS SAISON – galette : retirer ce commentaire en janvier pour la remettre
         <button class="filtre" type="button" aria-pressed="false" data-filtre="galettes">Galettes</button>
+        -->
         <button class="filtre" type="button" aria-pressed="false" data-filtre="tartiner">À tartiner</button>
         <button class="filtre" type="button" aria-pressed="false" data-filtre="epicerie">Épicerie</button>
     </div>
     <div class="vitrine" id="vitrine">
+        <!-- HORS SAISON – galette : retirer ce commentaire en janvier pour la remettre
         <article class="vitrine__carte" aria-labelledby="carte-galette" data-categorie="galettes">
           <a class="vitrine__media" href="/galette" tabindex="-1" aria-hidden="true">
             <img src="images/galette-entiere.webp" width="1535" height="1024" alt="Galette des rois tressée, vue de trois quarts">
@@ -115,6 +118,7 @@
           </a>
           <a class="lien-fiche" href="/galette">Voir la fiche</a>
         </article>
+        -->
         <article class="vitrine__carte" aria-labelledby="carte-exotique" data-categorie="buches">
           <a class="vitrine__media" href="/buches?parfum=exotique" tabindex="-1" aria-hidden="true">
             <img src="images/buche-exotique-coupe.webp" width="1000" height="883" alt="Bûche exotique coupée : ganache coco et citron vert, coulis et crémeux mangue passion, biscuit madeleine, croustillant praliné">
@@ -146,7 +150,7 @@
         <article class="vitrine__carte" aria-labelledby="carte-vanille" data-categorie="buches">
           <a class="vitrine__media" href="/buches?parfum=vanille" tabindex="-1" aria-hidden="true">
             <img src="images/buche-vanille-coupe.webp" width="1000" height="899" alt="Bûche vanille coupée : ganache montée vanille, mousse vanille torréfiée, caramel beurre salé, biscuit madeleine, croustillant praliné" loading="lazy">
-            <img class="vitrine__survol" src="images/buche-vanille-profil.webp" width="1000" height="880" alt="" loading="lazy">
+            <img class="vitrine__survol" src="images/buche-vanille-profil.webp" width="822" height="973" alt="" loading="lazy">
           </a>
           <p class="vitrine__saison">Noël 2026</p>
           <h2 class="vitrine__nom" id="carte-vanille"><a href="/buches?parfum=vanille">Bûche vanille</a></h2>

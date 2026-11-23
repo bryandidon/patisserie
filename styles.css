@@ -303,7 +303,7 @@ p { margin: 0 0 1em; }
 .rail__prix span { font-size: 1rem; font-style: italic; color: var(--encre-doux); }
 .carte-apercu__action { margin: 1.25rem 0 0; text-align: center; }
 @media (min-width: 760px) {
-  .rail { margin: 0; padding: 0; overflow: visible; grid-auto-flow: row; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  .rail { margin: 0; padding: 0; overflow: visible; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 1.25rem; max-width: 64rem; margin-inline: auto; }
   .carte-apercu__action { margin-top: 2rem; }
 }
 @media (prefers-reduced-motion: reduce) { .rail__img { transition: none; } }
