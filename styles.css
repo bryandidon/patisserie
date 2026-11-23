@@ -271,6 +271,7 @@ p { margin: 0 0 1em; }
 .saveur__gout { margin: .45rem .75rem 1.1rem; font-style: italic; line-height: 1.4; color: var(--encre-doux); }
 .saveur .card__commande { margin: auto 0 .9rem; }
 .saveur .lien-fiche { margin: 0; }
+@media (min-width: 760px) { .saveur__gout, .saveur .tel { display: none; } }
 .saveur__couches {
   list-style: none; margin: .7rem auto 1.2rem; padding: 0 0 0 1.1rem; max-width: 20rem;
   border-left: 1px solid var(--trait); text-align: left;
@@ -288,12 +289,8 @@ p { margin: 0 0 1em; }
     display: grid; grid-template-columns: 42% 1fr; align-content: center;
     column-gap: .9rem; align-items: center; text-align: left; padding: .75rem .9rem .75rem .5rem;
   }
-  .saveur { grid-template-areas: "media nom" "media commande" "media lien" "couches couches"; }
-  .saveur__media { grid-area: media; margin: 0; }
-  .saveur__nom { grid-area: nom; }
-  .saveur .card__commande { grid-area: commande; }
-  .saveur .lien-fiche { grid-area: lien; }
-  .saveur__couches { grid-area: couches; margin: .9rem 0 .2rem .6rem; max-width: none; }
+  .saveur__media { grid-row: 1 / span 4; margin: 0; }
+  .saveur__couches, .saveur .ordi { display: none; }
   .saveur__media img { aspect-ratio: 1; padding: 0; }
   .saveur__nom { font-size: 1.4rem; gap: .45rem; }
   .saveur__gout { margin: .3rem 0 .75rem; font-size: 1rem; line-height: 1.35; }
