@@ -826,3 +826,8 @@ html.verrou body > :not(.acces):not(svg) { display: none !important; }
   .rail__nom { margin: .2rem 0 .3rem; }
   .rail__prix { margin: 0; }
 }
+
+/* Page bûches : allergènes sous la composition */
+.gout__allergenes { margin: 0 0 1rem; text-align: center; font-size: 1.05rem; line-height: 1.45; color: var(--encre-doux); }
+.gout .pictos { flex-wrap: nowrap; gap: .2rem; }
+.gout .picto { width: 4rem; letter-spacing: .02em; }
