@@ -293,7 +293,7 @@ p { margin: 0 0 1em; }
 /* Accueil : le relief en gros plan, sur toute la largeur de l'écran */
 main { overflow-x: clip; }
 .detail { width: 100vw; margin: clamp(3.5rem, 8vw, 6rem) 0 0 calc(50% - 50vw); }
-.detail img { width: 100%; height: clamp(14rem, 38vw, 30rem); object-fit: cover; object-position: 50% 45%; }
+.detail img { width: 100%; height: clamp(14rem, 38vw, 30rem); object-fit: cover; object-position: 50% 72%; }
 .detail figcaption {
   padding: 1.1rem var(--gap) 0; text-align: center;
   font-size: var(--step-1); font-style: italic; color: var(--nuit);
