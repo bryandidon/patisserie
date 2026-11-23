@@ -797,10 +797,6 @@ html.verrou body > :not(.acces):not(svg) { display: none !important; }
   .apparait.is-vu { opacity: 1; transform: none; }
 }
 
-/* Page bûches : la photo d'ambiance de l'intérieur remplit le cadre de la galerie */
-.galerie__vue--photo { padding: 0; min-width: 0; overflow: hidden; }
-.galerie__vue--photo img { width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; }
-.galerie__vignette img[src$="-interieur.webp"] { object-fit: cover; }
 
 /* Palmiers : la balise <picture> (petite image sur téléphone) ne change pas la mise en page */
 .toile { display: contents; }
