@@ -173,6 +173,8 @@ p { margin: 0 0 1em; }
   pointer-events: none;
 }
 .carousel__item--fondu img { -webkit-box-reflect: unset; }
+/* Photos de profil (plus hautes) : même cadre pour chaque pièce */
+.carousel__item img[src$="-detoure.webp"] { aspect-ratio: 5 / 4; object-fit: contain; }
 .carousel__item--fondu { margin-bottom: -4%; }
 .carousel__controls:not(:focus-within) {
   position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
