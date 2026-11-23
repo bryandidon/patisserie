@@ -271,13 +271,29 @@ p { margin: 0 0 1em; }
 .saveur__gout { margin: .45rem .75rem 1.1rem; font-style: italic; line-height: 1.4; color: var(--encre-doux); }
 .saveur .card__commande { margin: auto 0 .9rem; }
 .saveur .lien-fiche { margin: 0; }
+.saveur__couches {
+  list-style: none; margin: .7rem auto 1.2rem; padding: 0 0 0 1.1rem; max-width: 20rem;
+  border-left: 1px solid var(--trait); text-align: left;
+}
+.saveur__couches li { position: relative; padding: .12rem 0 .3rem; font-size: .98rem; line-height: 1.3; color: var(--encre-doux); }
+.saveur__couches li::before {
+  content: ""; position: absolute; left: calc(-1.1rem - 3px); top: .55rem;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--or);
+}
+.saveur__couches span { color: var(--nuit); font-weight: 500; }
+.saveur__couches span::after { content: " "; }
 /* Téléphone : les bûches l'une sous l'autre, en cartes compactes (photo à gauche, texte à droite) */
 @media (max-width: 759px) {
   .saveur {
     display: grid; grid-template-columns: 42% 1fr; align-content: center;
     column-gap: .9rem; align-items: center; text-align: left; padding: .75rem .9rem .75rem .5rem;
   }
-  .saveur__media { grid-row: 1 / span 4; margin: 0; }
+  .saveur { grid-template-areas: "media nom" "media commande" "media lien" "couches couches"; }
+  .saveur__media { grid-area: media; margin: 0; }
+  .saveur__nom { grid-area: nom; }
+  .saveur .card__commande { grid-area: commande; }
+  .saveur .lien-fiche { grid-area: lien; }
+  .saveur__couches { grid-area: couches; margin: .9rem 0 .2rem .6rem; max-width: none; }
   .saveur__media img { aspect-ratio: 1; padding: 0; }
   .saveur__nom { font-size: 1.4rem; gap: .45rem; }
   .saveur__gout { margin: .3rem 0 .75rem; font-size: 1rem; line-height: 1.35; }
@@ -294,10 +310,6 @@ p { margin: 0 0 1em; }
 main { overflow-x: clip; }
 .detail { width: 100vw; margin: clamp(3.5rem, 8vw, 6rem) 0 0 calc(50% - 50vw); }
 .detail img { width: 100%; height: clamp(14rem, 38vw, 30rem); object-fit: cover; object-position: 50% 72%; }
-.detail figcaption {
-  padding: 1.1rem var(--gap) 0; text-align: center;
-  font-size: var(--step-1); font-style: italic; color: var(--nuit);
-}
 
 /* Accueil : le reste de la carte, en rangée qu'on fait glisser du doigt */
 .carte-apercu { margin-top: clamp(3rem, 7vw, 5rem); }
