@@ -202,8 +202,8 @@ p { margin: 0 0 1em; }
   .hero__toile { width: 100%; margin-top: -1rem; }
   .title { letter-spacing: .22em; margin-right: -.22em; gap: .9rem; }
   .hero .title::before, .hero .title::after { display: none; }
-  .carousel__item { width: 64vw; }
-  .carousel__ring { height: 58vw; }
+  .carousel__item { width: 60vw; }
+  .carousel__ring { height: 55vw; }
   .carousel__name { min-width: 0; flex: 1; }
 
   .hero__corner { width: 80px; top: 0; opacity: .8; }

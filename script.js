@@ -67,7 +67,7 @@ if (carousel) {
     const w = carousel.clientWidth;
     const itemW = items[0].offsetWidth;
     // Téléphone : les pièces de côté restent dans l'écran malgré la grande pièce de devant
-    const radius = itemW * (w < 700 ? 0.72 : 0.8);
+    const radius = itemW * (w < 700 ? 0.64 : 0.8);
     items.forEach((el, i) => {
       const t = i * step + angle;
       const depth = Math.cos(t);              // 1 devant, -1 derrière
