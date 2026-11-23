@@ -259,15 +259,9 @@ p { margin: 0 0 1em; }
 .saveurs h3 { font-size: var(--step-2); color: var(--nuit); line-height: 1.15; margin-bottom: .5em; }
 .saveurs__prix { margin: 0; font-size: var(--step-1); color: var(--nuit); }
 .saveurs__prix span { font-size: var(--step-0); font-style: italic; color: var(--encre-doux); }
-.saveurs__liste {
-  list-style: none; margin: 0 calc(var(--gap) * -1); padding: 0 var(--gap) .5rem;
-  display: grid; grid-auto-flow: column; grid-auto-columns: min(80%, 20rem); gap: 1rem;
-  overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--gap);
-  scrollbar-width: none; -webkit-overflow-scrolling: touch;
-}
-.saveurs__liste::-webkit-scrollbar { display: none; }
+.saveurs__liste { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; }
 .saveur {
-  scroll-snap-align: start; display: flex; flex-direction: column; align-items: center;
+  display: flex; flex-direction: column; align-items: center;
   padding: .5rem .5rem 1.4rem; border: 1px solid var(--trait); background: rgba(255, 255, 255, .35);
 }
 .saveur__media { display: block; width: 100%; margin-bottom: .6rem; }
@@ -277,12 +271,23 @@ p { margin: 0 0 1em; }
 .saveur__gout { margin: .45rem .75rem 1.1rem; font-style: italic; line-height: 1.4; color: var(--encre-doux); }
 .saveur .card__commande { margin: auto 0 .9rem; }
 .saveur .lien-fiche { margin: 0; }
-@media (min-width: 760px) {
-  .saveurs__liste {
-    margin: 0; padding: 0; overflow: visible;
-    grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 1.75rem);
+/* Téléphone : les bûches l'une sous l'autre, en cartes compactes (photo à gauche, texte à droite) */
+@media (max-width: 759px) {
+  .saveur {
+    display: grid; grid-template-columns: 42% 1fr; align-content: center;
+    column-gap: .9rem; align-items: center; text-align: left; padding: .75rem .9rem .75rem .5rem;
   }
+  .saveur__media { grid-row: 1 / span 4; margin: 0; }
+  .saveur__media img { aspect-ratio: 1; padding: 0; }
+  .saveur__nom { font-size: 1.4rem; gap: .45rem; }
+  .saveur__gout { margin: .3rem 0 .75rem; font-size: 1rem; line-height: 1.35; }
+  .saveur .card__commande { justify-self: start; margin: 0 0 .55rem; padding: .5rem 1.1rem; font-size: 1.05rem; }
+  .saveur .lien-fiche { justify-self: start; font-size: 1rem; }
 }
+@media (min-width: 760px) {
+  .saveurs__liste { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 1.75rem); }
+}
+
 @media (prefers-reduced-motion: reduce) { .saveur__media img { transition: none; } }
 
 /* Accueil : le relief en gros plan, sur toute la largeur de l'écran */
