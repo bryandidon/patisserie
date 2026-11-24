@@ -146,6 +146,21 @@ if (carousel) {
 
 // Bûches : changer de parfum (accueil, création à la une, et page /buches)
 // La photo, le bouton Commander, la fiche et le lien « Voir la composition » suivent le parfum choisi.
+// Vanille : choix du tube (3, 6 ou 12 gousses), repris dans le bouton Commander
+const formats = document.querySelector('[data-formats]');
+if (formats) {
+  const boutons = formats.querySelectorAll('.format');
+  const libelle = document.querySelector('[data-format-libelle]');
+  const commande = document.querySelector('[data-format-commande]');
+  boutons.forEach((b) => b.addEventListener('click', () => {
+    boutons.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    const nb = b.querySelector('.format__nb').textContent;
+    const prix = b.querySelector('.format__prix').textContent;
+    if (libelle) libelle.textContent = nb + ' gousses, ' + prix;
+    if (commande) commande.dataset.suiviFormat = nb + ' gousses';
+  }));
+}
+
 const parfums = document.querySelector('[data-parfums]');
 if (parfums) {
   const imgs = parfums.querySelectorAll('[data-parfum]');
@@ -422,7 +437,7 @@ if (filtres) {
   if (fiche) {
     const titre = fiche.querySelector('.produit__titre');
     const prix = fiche.querySelector('.card__prix');
-    const premier = fiche.querySelector('.prices dd');
+    const premier = fiche.querySelector('.prices dd, .format__prix');
     nom = titre ? titre.innerHTML : nom;
     info = prix ? prix.textContent.trim() : premier ? 'à partir de ' + premier.textContent.trim() : '';
     barre.innerHTML = '<p class="barre__texte"><span class="barre__nom"></span><span class="barre__info"></span></p>'

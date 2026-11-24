@@ -846,3 +846,21 @@ html.verrou body > :not(.acces):not(svg) { display: none !important; }
 .vitrine__carte .produit__bio { margin: .35rem 0 .2rem; }
 .bio--petit { margin: 0 0 .45rem; align-self: center; }
 @media (max-width: 759px) { .rail__carte .bio--petit { justify-self: start; } }
+
+/* Vanille : choix du tube, trois grandes cases à toucher */
+.formats__titre {
+  margin: 1.5rem 0 .7rem; font-family: var(--capitale); font-size: .75rem;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--or);
+}
+.formats { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; margin: 0 0 1.5rem; }
+.format {
+  display: flex; flex-direction: column; align-items: center; gap: .1rem; padding: .85rem .3rem .8rem;
+  border: 1px solid rgba(176, 134, 66, .35); background: rgba(255, 255, 255, .4); color: var(--encre-doux);
+  font-family: var(--serif); cursor: pointer; transition: border-color .25s var(--ease), background-color .25s var(--ease);
+}
+.format:hover { border-color: var(--trait); }
+.format[aria-pressed="true"] { border-color: var(--or); background: rgba(255, 255, 255, .85); color: var(--nuit); box-shadow: inset 0 0 0 1px var(--or); }
+.format__nb { font-size: 1.9rem; line-height: 1; color: var(--nuit); }
+.format__unite { font-size: .95rem; font-style: italic; }
+.format__prix { margin-top: .35rem; font-size: 1.25rem; color: var(--nuit); }
+@media (min-width: 1000px) { .formats { max-width: 26rem; } }

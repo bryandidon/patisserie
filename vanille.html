@@ -104,12 +104,14 @@
         <h1 class="produit__titre" id="produit-titre">Vanille de Madagascar</h1>
         <p class="produit__bio"><span class="bio" title="Issue de l'agriculture biologique"><svg class="bio__icone" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-13 14z"/><path d="M5 19 13 11"/></g></svg>Bio</span></p>
         <p class="lead">Gousses de vanille Bourbon, charnues et parfumées : celles de nos pâtisseries, en tube de verre.</p>
-        <dl class="prices" aria-label="Formats et prix">
-          <div><dt>3 gousses</dt><dd>9&nbsp;€</dd></div>
-          <div><dt>6 gousses</dt><dd>16&nbsp;€</dd></div>
-          <div><dt>12 gousses</dt><dd>29&nbsp;€</dd></div>
-        </dl>
-        <a class="pill pill--cta card__commande" href="https://takeat.fr/bryan-didon/emporter" data-suivi="Commander" data-suivi-depuis="page vanille">Commander la vanille
+        <!-- Choix du format : le bouton Commander reprend le format choisi -->
+        <p class="formats__titre" id="formats-titre">Choisissez votre tube</p>
+        <div class="formats" role="group" aria-labelledby="formats-titre" data-formats>
+          <button class="format" type="button" aria-pressed="true"><span class="format__nb">3</span><span class="format__unite">gousses</span><span class="format__prix">9&nbsp;€</span></button>
+          <button class="format" type="button" aria-pressed="false"><span class="format__nb">6</span><span class="format__unite">gousses</span><span class="format__prix">16&nbsp;€</span></button>
+          <button class="format" type="button" aria-pressed="false"><span class="format__nb">12</span><span class="format__unite">gousses</span><span class="format__prix">29&nbsp;€</span></button>
+        </div>
+        <a class="pill pill--cta card__commande" href="https://takeat.fr/bryan-didon/emporter" data-suivi="Commander" data-suivi-depuis="page vanille" data-format-commande><span>Commander · <span data-format-libelle>3 gousses, 9&nbsp;€</span></span>
           <svg class="pill__chevron" aria-hidden="true"><use href="#chevron"/></svg>
         </a>
         <p class="produit__retrait">Commande en ligne, à retirer au point de retrait à l’heure choisie.</p>
