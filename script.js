@@ -156,6 +156,10 @@ if (parfums) {
     document.querySelectorAll('[data-parfum-commande]').forEach((el) => { el.hidden = el.dataset.parfumCommande !== choix; });
     document.querySelectorAll('[data-parfum-detail]').forEach((el) => { el.hidden = el.dataset.parfumDetail !== choix; });
     document.querySelectorAll('[data-parfum-lien]').forEach((a) => { a.href = '/buches?parfum=' + choix; });
+    // Fiche bûches : le titre, l'onglet et la barre du bas prennent le nom du parfum choisi
+    const nom = 'Bûche ' + choix;
+    document.querySelectorAll('[data-parfum-titre], .barre__nom').forEach((el) => { el.textContent = nom; });
+    document.title = nom + ' · Bryan Didon – Haute Pâtisserie';
   };
   btns.forEach((btn) => btn.addEventListener('click', () => choisir(btn.dataset.parfumBtn)));
   // Arrivée depuis l'accueil avec un parfum déjà choisi : /buches?parfum=chocolat
