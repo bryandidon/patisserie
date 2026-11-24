@@ -19,8 +19,8 @@ Site vitrine qui présente la marque et **redirige vers l'application de command
 - Bouton « Commander Click & Collect » (`data-panier-ou-catalogue`) : panier vide → `/creations` ; panier rempli → panneau Takeat (lu dans `localStorage` `takeat:etat:bryan-didon`).
 - **Rester un maximum sur le site** : quand le code d'accès sera retiré, faire pointer le bouton Commander de `liens.html` vers `/creations`.
 - Liens produits : galette `091da5f4-b143-4d4c-8de2-aa8ad6f76f74`, bûche vanille `84724e96-a320-4502-a9fe-34a3eb0c1158`, bûche chocolat `f9de2f43-b2e2-47dc-886b-6cee0001b72b`, bûche exotique `a1e3f6e6-128f-41c9-b348-307a985ca5eb`, pâte à tartiner praliné vanille `74bd453e-48f6-4b58-99b2-41d4fa9a115b`.
-- Pâte à tartiner gianduja (9,50 €, page `/gianduja`) : **lien Takeat à fournir** ; en attendant, ses boutons pointent vers toute la carte.
-- Vanille de Madagascar **bio** (pastille « Bio » `.bio` : fiche, catalogue, accueil ; logo bio officiel européen seulement avec le code de l'organisme certificateur) (2, 5 ou 10 gousses : 5 / 12 / 20 €) : **lien Takeat à fournir** ; en attendant, ses boutons pointent vers toute la carte (`…/emporter`).
+- Pâte à tartiner gianduja (10 €, page `/gianduja`) : **lien Takeat à fournir** ; en attendant, ses boutons pointent vers toute la carte.
+- Vanille de Madagascar **bio** (pastille « Bio » `.bio` : fiche, catalogue, accueil ; logo bio officiel européen seulement avec le code de l'organisme certificateur) (3, 6 ou 12 gousses : 9 / 16 / 29 €) : **lien Takeat à fournir** ; en attendant, ses boutons pointent vers toute la carte (`…/emporter`).
 
 ## Pages produits
 - Page `maison.html` (`/maison`) : texte de Bryan sur la maison, mot pour mot ; cible du lien « La Maison » du menu (l'accueil n'en garde qu'un aperçu).
